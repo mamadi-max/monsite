@@ -342,23 +342,6 @@
     }
     .portfolio-item:hover .portfolio-overlay { opacity: 1; }
     .portfolio-overlay span { color: #fff; font-weight: 700; font-size: 0.95rem; }
-    .portfolio-empty {
-      grid-column: 1/-1; text-align: center; padding: 60px 20px;
-      color: var(--text-muted);
-    }
-    .portfolio-empty i { font-size: 3rem; opacity: 0.3; display: block; margin-bottom: 14px; }
-    .upload-zone {
-      grid-column: 1/-1;
-      border: 2px dashed var(--gray);
-      border-radius: 16px; padding: 40px;
-      text-align: center; cursor: pointer;
-      transition: border-color 0.18s, background 0.18s;
-    }
-    .upload-zone:hover { border-color: var(--blue); background: rgba(26,63,165,0.03); }
-    .upload-zone i { font-size: 2.2rem; color: var(--blue); margin-bottom: 10px; }
-    .upload-zone p { color: var(--text-muted); font-size: 0.93rem; }
-    .upload-zone strong { color: var(--blue); }
-    #file-input { display: none; }
 
     /* ===== ABOUT ===== */
     #about { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: #fff; position: relative; overflow: hidden; }
@@ -773,16 +756,79 @@
     </div>
   </div>
   <div class="portfolio-grid" id="portfolioGrid">
-    <!-- Upload zone -->
-    <div class="upload-zone" id="uploadZone">
-      <input type="file" id="file-input" accept="image/*" multiple />
-      <i class="fas fa-cloud-upload-alt"></i>
-      <p><strong>Cliquez ici pour ajouter vos créations</strong><br>Glissez-déposez ou sélectionnez vos images (JPG, PNG, GIF…)</p>
+
+    <!-- IMAGE 1 — remplacez image1.jpg par le nom ou lien de votre image -->
+    <div class="portfolio-item" data-cat="affiche">
+      <img src="image1.jpg" alt="Affiche 1" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Affiche 1</span></div>
     </div>
-    <div class="portfolio-empty" id="portfolioEmpty">
-      <i class="fas fa-photo-film"></i>
-      <p>Vos créations apparaîtront ici.<br>Ajoutez vos images en cliquant sur la zone ci-dessus.</p>
+
+    <!-- IMAGE 2 -->
+    <div class="portfolio-item" data-cat="affiche">
+      <img src="image2.jpg" alt="Affiche 2" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Affiche 2</span></div>
     </div>
+
+    <!-- IMAGE 3 -->
+    <div class="portfolio-item" data-cat="logo">
+      <img src="image3.jpg" alt="Logo 1" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Logo 1</span></div>
+    </div>
+
+    <!-- IMAGE 4 -->
+    <div class="portfolio-item" data-cat="logo">
+      <img src="image4.jpg" alt="Logo 2" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Logo 2</span></div>
+    </div>
+
+    <!-- IMAGE 5 -->
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="image5.jpg" alt="Flyer 1" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Flyer 1</span></div>
+    </div>
+
+    <!-- IMAGE 6 -->
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="image6.jpg" alt="Flyer 2" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Flyer 2</span></div>
+    </div>
+
+    <!-- IMAGE 7 -->
+    <div class="portfolio-item" data-cat="autre">
+      <img src="image7.jpg" alt="Carte de visite 1" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Carte de visite 1</span></div>
+    </div>
+
+    <!-- IMAGE 8 -->
+    <div class="portfolio-item" data-cat="autre">
+      <img src="image8.jpg" alt="Carte de visite 2" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Carte de visite 2</span></div>
+    </div>
+
+    <!-- IMAGE 9 -->
+    <div class="portfolio-item" data-cat="affiche">
+      <img src="image9.jpg" alt="Banderole 1" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Banderole 1</span></div>
+    </div>
+
+    <!-- IMAGE 10 -->
+    <div class="portfolio-item" data-cat="logo">
+      <img src="image10.jpg" alt="Logo 3" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Logo 3</span></div>
+    </div>
+
+    <!-- IMAGE 11 -->
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="image11.jpg" alt="Flyer 3" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Flyer 3</span></div>
+    </div>
+
+    <!-- IMAGE 12 -->
+    <div class="portfolio-item" data-cat="autre">
+      <img src="image12.jpg" alt="Étiquette 1" loading="lazy"/>
+      <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> Étiquette 1</span></div>
+    </div>
+
   </div>
 </section>
 
@@ -893,7 +939,7 @@
   </div>
   <div class="footer-bottom">
     <span>© 2026 <a href="#">ID-Intello Digit</a> — Tous droits réservés</span>
-    <span>Koudougou, Burkina Faso | <a href="tel:+22672331404">(+226) 07 26 84 91</a></span>
+    <span>Koudougou, Burkina Faso | <a href="tel:+22607268491">(+226) 07 26 84 91</a></span>
   </div>
 </footer>
 
@@ -935,68 +981,30 @@
   });
   scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 
-  // PORTFOLIO
-  let portfolioItems = [];
-  const grid = document.getElementById('portfolioGrid');
-  const empty = document.getElementById('portfolioEmpty');
-  const uploadZone = document.getElementById('uploadZone');
-  const fileInput = document.getElementById('file-input');
-
-  uploadZone.addEventListener('click', () => fileInput.click());
-  uploadZone.addEventListener('dragover', e => { e.preventDefault(); uploadZone.style.borderColor = 'var(--blue)'; });
-  uploadZone.addEventListener('dragleave', () => uploadZone.style.borderColor = '');
-  uploadZone.addEventListener('drop', e => {
-    e.preventDefault();
-    uploadZone.style.borderColor = '';
-    handleFiles(e.dataTransfer.files);
-  });
-  fileInput.addEventListener('change', () => handleFiles(fileInput.files));
-
-  function handleFiles(files) {
-    Array.from(files).forEach(file => {
-      if (!file.type.startsWith('image/')) return;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const item = { src: e.target.result, name: file.name, category: 'autre' };
-        portfolioItems.push(item);
-        renderPortfolio();
-      };
-      reader.readAsDataURL(file);
-    });
-  }
-
-  function renderPortfolio(filter = 'all') {
-    // Remove old items (keep upload zone)
-    Array.from(grid.querySelectorAll('.portfolio-item')).forEach(i => i.remove());
-    empty.style.display = portfolioItems.length === 0 ? 'block' : 'none';
-    const filtered = filter === 'all' ? portfolioItems : portfolioItems.filter(i => i.category === filter);
-    filtered.forEach((item, idx) => {
-      const div = document.createElement('div');
-      div.className = 'portfolio-item';
-      div.innerHTML = `
-        <img src="${item.src}" alt="${item.name}" loading="lazy"/>
-        <div class="portfolio-overlay"><span><i class="fas fa-expand"></i> ${item.name}</span></div>
-      `;
-      div.addEventListener('click', () => openModal(item));
-      grid.appendChild(div);
-    });
-  }
-
+  // PORTFOLIO — filtre par catégorie
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
-      renderPortfolio(btn.dataset.filter);
+      const filter = btn.dataset.filter;
+      document.querySelectorAll('.portfolio-item').forEach(item => {
+        item.style.display = (filter === 'all' || item.dataset.cat === filter) ? 'block' : 'none';
+      });
     });
   });
 
-  // MODAL
-  function openModal(item) {
-    document.getElementById('modalTitle').textContent = item.name;
-    document.getElementById('modalDesc').textContent = 'Réalisation ID-Intello Digit';
-    document.getElementById('modalImg').src = item.src;
-    document.getElementById('modalOverlay').classList.add('open');
-  }
+  // MODAL — clic sur une image du portfolio
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    item.addEventListener('click', () => {
+      const img = item.querySelector('img');
+      const label = item.querySelector('.portfolio-overlay span').innerText.trim();
+      document.getElementById('modalTitle').textContent = label;
+      document.getElementById('modalDesc').textContent = 'Réalisation ID-Intello Digit';
+      document.getElementById('modalImg').src = img.src;
+      document.getElementById('modalOverlay').classList.add('open');
+    });
+  });
+
   function closeModal() {
     document.getElementById('modalOverlay').classList.remove('open');
   }
@@ -1014,8 +1022,6 @@
       btn.innerHTML = '<i class="fas fa-check"></i> Envoyé !';
     }, 1600);
   }
-
-  renderPortfolio();
 </script>
 </body>
 </html>
