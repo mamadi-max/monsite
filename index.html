@@ -122,7 +122,7 @@
       box-shadow: 0 2px 24px rgba(14,37,112,0.25);
       padding: 0 5vw;
       display: flex; align-items: center; justify-content: space-between;
-      height: 68px;
+      height: 78px;
     }
     .nav-logo {
       display: flex; align-items: center; gap: 12px;
@@ -163,10 +163,21 @@
     }
 
     /* ===== LOGO (image réelle + repli automatique) ===== */
-    .nav-logo-img, .footer-logo-img {
+    .nav-logo-img {
+      width: 60px; height: 60px;
       object-fit: contain;
-      background: linear-gradient(135deg, var(--blue-light), var(--green));
-      padding: 4px;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.18);
+    }
+    .footer-logo-img {
+      width: 54px; height: 54px;
+      object-fit: contain;
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 6px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.18);
     }
 
     /* ===== BADGE OUVERT / FERMÉ EN DIRECT ===== */
@@ -728,6 +739,7 @@
       .nav-logo-text { font-size: 0.98rem; }
       .nav-logo-text span { font-size: 0.62rem; }
       .nav-logo-icon { width: 36px; height: 36px; font-size: 1rem; }
+      .nav-logo-img { width: 48px; height: 48px; }
       .hero { padding: 40px 5vw; min-height: auto; }
       .hero-btns { flex-direction: column; align-items: stretch; }
       .hero-btns .btn { justify-content: center; }
