@@ -376,7 +376,7 @@
     .card-divers .service-card-head { background: linear-gradient(135deg, var(--green-dark), var(--green-light)); }
 
     /* ============================================================
-       COURSES - INTÉGRATION COMPLÈTE
+       COURSES - INTÉGRATION DIRECTE DANS LE HTML
        ============================================================ */
     #courses { background: var(--gray-light); }
     .courses-grid {
@@ -401,7 +401,6 @@
     }
     .course-card-img {
       height: 120px;
-      background: linear-gradient(135deg, var(--blue), var(--blue-light));
       display: flex;
       align-items: center;
       justify-content: center;
@@ -482,7 +481,6 @@
     .course-player-body { display: grid; grid-template-columns: 1fr 280px; gap: 30px; }
     .course-content { padding-right: 10px; }
     .course-content .chapter-title { font-family: var(--font-exo); font-weight: 800; font-size: 1.3rem; margin-bottom: 8px; }
-    .course-content .chapter-subtitle { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 16px; }
     .course-content .chapter-content { color: var(--text); line-height: 1.8; font-size: 0.98rem; }
     .course-content .chapter-content p { margin-bottom: 12px; }
     .course-content .chapter-content ul { padding-left: 24px; margin-bottom: 12px; }
@@ -492,7 +490,6 @@
       border-radius: 10px; border-left: 4px solid var(--blue);
       margin: 12px 0;
     }
-    .course-content .chapter-content .highlight strong { color: var(--blue); }
     .course-content .chapter-quiz {
       margin-top: 24px; background: var(--gray-light);
       border-radius: 12px; padding: 20px; border: 1px solid var(--gray);
@@ -1394,7 +1391,7 @@
 </section>
 
 <!-- ============================================================
-   COURS COMPLETS (INTÉGRÉS SANS VIDÉOS)
+   COURS COMPLETS - INTÉGRÉS DIRECTEMENT DANS LE HTML
    ============================================================ -->
 <section id="courses">
   <div class="reveal">
@@ -1403,7 +1400,110 @@
     <p class="section-sub">Des formations complètes avec du contenu textuel, des quiz et des certifications — entièrement gratuits pour vous former aux métiers du numérique.</p>
   </div>
   <div class="courses-grid" id="coursesGrid">
-    <!-- Les cours sont générés dynamiquement par JavaScript -->
+    <!-- Cours 1 : Cyber-sécurité -->
+    <div class="course-card reveal" onclick="openCourse('cybersec')">
+      <div class="course-card-img" style="background: linear-gradient(135deg, #1a3fa5, #2d5be3);">
+        <i class="fas fa-shield-halved"></i>
+        <span class="course-free-badge"><i class="fas fa-graduation-cap"></i> Gratuit</span>
+        <span class="course-progress-badge" id="progress-cybersec">0%</span>
+      </div>
+      <div class="course-card-body">
+        <h3>Cyber-sécurité</h3>
+        <p>Protégez vos données et vos systèmes contre les menaces numériques. Apprenez les bases de la sécurité informatique.</p>
+        <div class="course-meta">
+          <span><i class="fas fa-book"></i> 8 chapitres</span>
+          <span><i class="fas fa-check-circle"></i> <span id="completed-cybersec">0</span> terminés</span>
+        </div>
+        <div class="course-progress-bar">
+          <div class="fill" id="progressFill-cybersec" style="width: 0%"></div>
+        </div>
+        <button class="btn btn-blue"><i class="fas fa-play"></i> Commencer</button>
+      </div>
+    </div>
+
+    <!-- Cours 2 : IA Générative -->
+    <div class="course-card reveal" onclick="openCourse('ia')">
+      <div class="course-card-img" style="background: linear-gradient(135deg, #7c2d9e, #b05fd6);">
+        <i class="fas fa-robot"></i>
+        <span class="course-free-badge"><i class="fas fa-graduation-cap"></i> Gratuit</span>
+        <span class="course-progress-badge" id="progress-ia">0%</span>
+      </div>
+      <div class="course-card-body">
+        <h3>IA Générative</h3>
+        <p>Découvrez comment utiliser ChatGPT, Midjourney et DALL·E pour créer du contenu, des images et automatiser vos tâches.</p>
+        <div class="course-meta">
+          <span><i class="fas fa-book"></i> 6 chapitres</span>
+          <span><i class="fas fa-check-circle"></i> <span id="completed-ia">0</span> terminés</span>
+        </div>
+        <div class="course-progress-bar">
+          <div class="fill" id="progressFill-ia" style="width: 0%"></div>
+        </div>
+        <button class="btn btn-blue"><i class="fas fa-play"></i> Commencer</button>
+      </div>
+    </div>
+
+    <!-- Cours 3 : Facebook Ads -->
+    <div class="course-card reveal" onclick="openCourse('fbads')">
+      <div class="course-card-img" style="background: linear-gradient(135deg, #1877F2, #42A5F5);">
+        <i class="fas fa-bullhorn"></i>
+        <span class="course-free-badge"><i class="fas fa-graduation-cap"></i> Gratuit</span>
+        <span class="course-progress-badge" id="progress-fbads">0%</span>
+      </div>
+      <div class="course-card-body">
+        <h3>Facebook Ads</h3>
+        <p>Maîtrisez la publicité sur Facebook et Instagram : création de campagnes, ciblage, optimisation et analyse des résultats.</p>
+        <div class="course-meta">
+          <span><i class="fas fa-book"></i> 6 chapitres</span>
+          <span><i class="fas fa-check-circle"></i> <span id="completed-fbads">0</span> terminés</span>
+        </div>
+        <div class="course-progress-bar">
+          <div class="fill" id="progressFill-fbads" style="width: 0%"></div>
+        </div>
+        <button class="btn btn-blue"><i class="fas fa-play"></i> Commencer</button>
+      </div>
+    </div>
+
+    <!-- Cours 4 : Retouche Photo -->
+    <div class="course-card reveal" onclick="openCourse('retouche')">
+      <div class="course-card-img" style="background: linear-gradient(135deg, #e67e22, #f39c12);">
+        <i class="fas fa-image"></i>
+        <span class="course-free-badge"><i class="fas fa-graduation-cap"></i> Gratuit</span>
+        <span class="course-progress-badge" id="progress-retouche">0%</span>
+      </div>
+      <div class="course-card-body">
+        <h3>Retouche Photo</h3>
+        <p>Apprenez à retoucher vos photos comme un pro avec Photoshop, Lightroom et les outils IA de retouche.</p>
+        <div class="course-meta">
+          <span><i class="fas fa-book"></i> 6 chapitres</span>
+          <span><i class="fas fa-check-circle"></i> <span id="completed-retouche">0</span> terminés</span>
+        </div>
+        <div class="course-progress-bar">
+          <div class="fill" id="progressFill-retouche" style="width: 0%"></div>
+        </div>
+        <button class="btn btn-blue"><i class="fas fa-play"></i> Commencer</button>
+      </div>
+    </div>
+
+    <!-- Cours 5 : Design Graphique -->
+    <div class="course-card reveal" onclick="openCourse('design')">
+      <div class="course-card-img" style="background: linear-gradient(135deg, #e74c3c, #e67e22);">
+        <i class="fas fa-pen-ruler"></i>
+        <span class="course-free-badge"><i class="fas fa-graduation-cap"></i> Gratuit</span>
+        <span class="course-progress-badge" id="progress-design">0%</span>
+      </div>
+      <div class="course-card-body">
+        <h3>Design Graphique</h3>
+        <p>Les fondamentaux du design : typographie, couleurs, composition, et utilisation de Canva, Figma et Photoshop.</p>
+        <div class="course-meta">
+          <span><i class="fas fa-book"></i> 6 chapitres</span>
+          <span><i class="fas fa-check-circle"></i> <span id="completed-design">0</span> terminés</span>
+        </div>
+        <div class="course-progress-bar">
+          <div class="fill" id="progressFill-design" style="width: 0%"></div>
+        </div>
+        <button class="btn btn-blue"><i class="fas fa-play"></i> Commencer</button>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1429,7 +1529,6 @@
     <p class="section-sub">Expérimentez nos compétences en direct ! Jouez avec les outils ci-dessous pour voir le résultat en temps réel.</p>
   </div>
   <div class="demo-grid">
-    <!-- Demo 1 -->
     <div class="demo-card reveal">
       <div class="demo-card-header"><i class="fas fa-font"></i><h3>Éditeur de texte stylisé</h3></div>
       <div class="demo-card-body">
@@ -1454,7 +1553,6 @@
       </div>
     </div>
 
-    <!-- Demo 2 -->
     <div class="demo-card reveal">
       <div class="demo-card-header"><i class="fas fa-palette"></i><h3>Générateur de logo</h3></div>
       <div class="demo-card-body">
@@ -1476,7 +1574,6 @@
       </div>
     </div>
 
-    <!-- Demo 3 -->
     <div class="demo-card reveal">
       <div class="demo-card-header"><i class="fas fa-wand-magic-sparkles"></i><h3>Retouche photo interactive</h3></div>
       <div class="demo-card-body">
@@ -1581,7 +1678,6 @@
     <span class="warning">NB : Toute modification au-delà de deux (2) est facturée.</span> <em>No money, no work.</em>
   </div>
 
-  <!-- CALCULATEUR DE DEVIS -->
   <div class="quote-box reveal">
     <div class="quote-head">
       <i class="fas fa-calculator"></i>
@@ -1956,7 +2052,7 @@
 </div>
 
 <!-- ============================================================
-   JAVASCRIPT - Avec tous les cours intégrés
+   JAVASCRIPT
    ============================================================ -->
 <script>
   // ============================================================
@@ -1966,564 +2062,91 @@
   const SHOP_URL = 'https://vcpgzfjp.mychariow.shop';
 
   // ============================================================
-  // DONNÉES DES COURS (CONTENU COMPLET SANS VIDÉOS)
+  // DONNÉES DES COURS
   // ============================================================
-  const coursesData = [{
-    id: 'cybersec',
-    title: 'Cyber-sécurité',
-    icon: 'fa-shield-halved',
-    color: 'linear-gradient(135deg, #1a3fa5, #2d5be3)',
-    description: 'Protégez vos données et vos systèmes contre les menaces numériques. Apprenez les bases de la sécurité informatique.',
-    chapters: [
-      {
-        title: 'Introduction à la cybersécurité',
-        content: `<p>La cybersécurité est l'ensemble des pratiques, technologies et processus conçus pour protéger les réseaux, les appareils, les programmes et les données contre les attaques, les dommages ou les accès non autorisés.</p>
-        <div class="highlight"><strong>💡 Pourquoi c'est important ?</strong> En 2024, une attaque par ransomware a lieu toutes les 11 secondes dans le monde. La protection de vos données est cruciale.</div>
-        <p><strong>Les 3 piliers de la cybersécurité :</strong></p>
-        <ul>
-          <li><strong>Confidentialité</strong> : Seules les personnes autorisées ont accès aux données</li>
-          <li><strong>Intégrité</strong> : Les données sont exactes et non modifiées sans autorisation</li>
-          <li><strong>Disponibilité</strong> : Les données sont accessibles quand nécessaire</li>
-        </ul>`,
-        quiz: {
-          question: 'Quels sont les 3 piliers de la cybersécurité ?',
-          options: ['Confidentialité, Intégrité, Disponibilité', 'Sécurité, Rapidité, Fiabilité', 'Protection, Sauvegarde, Restauration'],
-          correct: 0
-        }
-      },
-      {
-        title: 'Les menaces numériques',
-        content: `<p>Les menaces numériques sont nombreuses et évoluent constamment. Voici les principales à connaître :</p>
-        <ul>
-          <li><strong>Virus et malwares</strong> : Logiciels malveillants qui infectent votre système</li>
-          <li><strong>Phishing</strong> : Tentative d'obtenir vos informations personnelles via des emails frauduleux</li>
-          <li><strong>Ransomware</strong> : Virus qui bloque vos fichiers et demande une rançon</li>
-          <li><strong>Attaques DDoS</strong> : Surcharge d'un serveur pour le rendre indisponible</li>
-        </ul>
-        <div class="highlight"><strong>⚠️ Astuce :</strong> Ne cliquez jamais sur des liens suspects et méfiez-vous des emails qui vous demandent des informations personnelles.</div>`,
-        quiz: {
-          question: 'Quelle menace consiste à bloquer vos fichiers pour demander une rançon ?',
-          options: ['Phishing', 'Ransomware', 'DDoS'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Mots de passe sécurisés',
-        content: `<p>Un mot de passe fort est la première barrière contre les intrusions. Voici comment créer un mot de passe sécurisé :</p>
-        <ul>
-          <li><strong>Longueur</strong> : Au moins 12 caractères</li>
-          <li><strong>Complexité</strong> : Mélange de majuscules, minuscules, chiffres et symboles</li>
-          <li><strong>Unicité</strong> : Un mot de passe différent pour chaque service</li>
-          <li><strong>Phrase de passe</strong> : Utilisez une phrase facile à retenir mais difficile à deviner</li>
-        </ul>
-        <div class="highlight"><strong>🔐 Exemple :</strong> "MaVoitureRougeRouleVite!" est plus sécurisé que "123456"</div>`,
-        quiz: {
-          question: 'Quelle est la longueur minimale recommandée pour un mot de passe sécurisé ?',
-          options: ['6 caractères', '8 caractères', '12 caractères'],
-          correct: 2
-        }
-      },
-      {
-        title: 'Authentification à deux facteurs',
-        content: `<p>L'authentification à deux facteurs (2FA) ajoute une couche de sécurité supplémentaire. Même si quelqu'un connaît votre mot de passe, il ne pourra pas accéder à votre compte sans le second facteur.</p>
-        <ul>
-          <li><strong>Facteur 1</strong> : Ce que vous savez (mot de passe)</li>
-          <li><strong>Facteur 2</strong> : Ce que vous possédez (téléphone, clé de sécurité)</li>
-          <li><strong>Facteur 3</strong> : Ce que vous êtes (empreinte digitale, reconnaissance faciale)</li>
-        </ul>
-        <div class="highlight"><strong>📱 Activez la 2FA :</strong> Sur tous vos comptes importants (email, réseaux sociaux, banque).</div>`,
-        quiz: {
-          question: 'L\'authentification à deux facteurs utilise combien de facteurs ?',
-          options: ['1 facteur', '2 facteurs', '3 facteurs'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Protection des données',
-        content: `<p>La protection des données est essentielle pour préserver votre vie privée et celle de vos clients.</p>
-        <ul>
-          <li><strong>Chiffrement</strong> : Transformez vos données en code illisible pour les non-autorisés</li>
-          <li><strong>Sauvegarde</strong> : Faites des copies régulières de vos données importantes</li>
-          <li><strong>Contrôle d'accès</strong> : Limitez l'accès aux données sensibles</li>
-          <li><strong>RGPD</strong> : Respectez la réglementation sur la protection des données</li>
-        </ul>
-        <div class="highlight"><strong>💾 Sauvegarde 3-2-1 :</strong> 3 copies, sur 2 supports différents, dont 1 hors site.</div>`,
-        quiz: {
-          question: 'La règle de sauvegarde 3-2-1 recommande combien de copies ?',
-          options: ['2 copies', '3 copies', '4 copies'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Sécurité des réseaux',
-        content: `<p>La sécurité des réseaux protège votre connexion et vos appareils connectés.</p>
-        <ul>
-          <li><strong>VPN</strong> : Cache votre adresse IP et chiffre votre connexion</li>
-          <li><strong>WPA3</strong> : Le dernier standard de sécurité pour le Wi-Fi</li>
-          <li><strong>Pare-feu</strong> : Filtre le trafic réseau entrant et sortant</li>
-          <li><strong>Réseaux publics</strong> : Soyez prudent sur les Wi-Fi publics</li>
-        </ul>
-        <div class="highlight"><strong>🌐 Astuce :</strong> Utilisez toujours un VPN sur les réseaux Wi-Fi publics.</div>`,
-        quiz: {
-          question: 'Que signifie VPN ?',
-          options: ['Virtual Private Network', 'Very Personal Network', 'Visual Private Network'],
-          correct: 0
-        }
-      },
-      {
-        title: 'Antivirus et pare-feu',
-        content: `<p>Les antivirus et pare-feu sont vos premières lignes de défense contre les menaces.</p>
-        <ul>
-          <li><strong>Antivirus</strong> : Détecte et supprime les logiciels malveillants</li>
-          <li><strong>Pare-feu</strong> : Bloque les accès non autorisés à votre réseau</li>
-          <li><strong>Mises à jour</strong> : Gardez vos logiciels à jour pour les dernières protections</li>
-          <li><strong>Analyse régulière</strong> : Scannez votre système au moins une fois par semaine</li>
-        </ul>
-        <div class="highlight"><strong>🛡️ Recommandation :</strong> Utilisez un antivirus reconnu comme Kaspersky, Bitdefender ou Windows Defender.</div>`,
-        quiz: {
-          question: 'À quelle fréquence devriez-vous analyser votre système ?',
-          options: ['Une fois par mois', 'Une fois par semaine', 'Une fois par jour'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Bonnes pratiques',
-        content: `<p>Adoptez ces bonnes pratiques pour rester en sécurité :</p>
-        <ul>
-          <li><strong>Mises à jour</strong> : Activez les mises à jour automatiques</li>
-          <li><strong>Téléchargements</strong> : Ne téléchargez que depuis des sources officielles</li>
-          <li><strong>Liens</strong> : Vérifiez les URL avant de cliquer</li>
-          <li><strong>Formation</strong> : Formez-vous et formez votre équipe</li>
-        </ul>
-        <div class="highlight"><strong>✅ Conclusion :</strong> La cybersécurité est une habitude, pas une destination.</div>`,
-        quiz: {
-          question: 'Quelle est la meilleure pratique pour les mises à jour ?',
-          options: ['Les activer automatiquement', 'Les faire manuellement chaque mois', 'Ne jamais les faire'],
-          correct: 0
-        }
-      }
-    ]
-  }, {
-    id: 'ia',
-    title: 'IA Générative',
-    icon: 'fa-robot',
-    color: 'linear-gradient(135deg, #7c2d9e, #b05fd6)',
-    description: 'Découvrez comment utiliser ChatGPT, Midjourney et DALL·E pour créer du contenu, des images et automatiser vos tâches.',
-    chapters: [
-      {
-        title: 'Qu\'est-ce que l\'IA générative ?',
-        content: `<p>L'intelligence artificielle générative est une technologie capable de créer du contenu original (texte, images, musique, code) à partir de simples instructions (prompts).</p>
-        <div class="highlight"><strong>🤖 Exemple :</strong> "Génère-moi un logo pour une entreprise de technologie verte" → L'IA crée plusieurs propositions.</div>
-        <ul>
-          <li><strong>Modèles de langage</strong> : ChatGPT, Claude, Gemini</li>
-          <li><strong>Génération d'images</strong> : Midjourney, DALL·E, Stable Diffusion</li>
-          <li><strong>Génération de code</strong> : GitHub Copilot, CodeWhisperer</li>
-        </ul>`,
-        quiz: {
-          question: 'Qu\'est-ce que l\'IA générative peut créer ?',
-          options: ['Uniquement du texte', 'Du texte, des images, de la musique et du code', 'Uniquement des images'],
-          correct: 1
-        }
-      },
-      {
-        title: 'ChatGPT et les modèles de langage',
-        content: `<p>ChatGPT est un modèle de langage développé par OpenAI. Il peut répondre à des questions, écrire du contenu, coder, et bien plus encore.</p>
-        <ul>
-          <li><strong>GPT-4</strong> : La dernière version avec des capacités avancées</li>
-          <li><strong>ChatGPT Plus</strong> : Version payante avec accès prioritaire</li>
-          <li><strong>Alternatives</strong> : Claude (Anthropic), Gemini (Google), Mistral</li>
-        </ul>
-        <div class="highlight"><strong>💡 Astuce :</strong> Soyez précis dans vos prompts pour obtenir de meilleurs résultats.</div>`,
-        quiz: {
-          question: 'Qui a développé ChatGPT ?',
-          options: ['Google', 'OpenAI', 'Microsoft'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Midjourney et la génération d\'images',
-        content: `<p>Midjourney est un outil de génération d'images par IA, accessible via Discord. Il produit des images de qualité professionnelle.</p>
-        <ul>
-          <li><strong>Prompts</strong> : Descriptions détaillées pour guider l'IA</li>
-          <li><strong>Paramètres</strong> : Ajustez la qualité, le format, le style</li>
-          <li><strong>Versions</strong> : V6 est la dernière version disponible</li>
-        </ul>
-        <div class="highlight"><strong>🎨 Exemple de prompt :</strong> "A modern logo for a tech startup, minimalist, blue and green, clean lines"</div>`,
-        quiz: {
-          question: 'Sur quelle plateforme Midjourney est-il accessible ?',
-          options: ['Discord', 'WhatsApp', 'Telegram'],
-          correct: 0
-        }
-      },
-      {
-        title: 'DALL·E et la création visuelle',
-        content: `<p>DALL·E est l'outil de génération d'images d'OpenAI, intégré à ChatGPT pour une expérience fluide.</p>
-        <ul>
-          <li><strong>DALL·E 3</strong> : La version la plus récente avec des capacités améliorées</li>
-          <li><strong>Intégration</strong> : Directement accessible via ChatGPT</li>
-          <li><strong>Styles</strong> : Photoréaliste, artistique, minimaliste, etc.</li>
-        </ul>
-        <div class="highlight"><strong>🌟 Différence :</strong> DALL·E excelle dans la compréhension des prompts complexes et des références culturelles.</div>`,
-        quiz: {
-          question: 'Quelle société a développé DALL·E ?',
-          options: ['Google', 'OpenAI', 'Midjourney'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Applications pratiques',
-        content: `<p>L'IA générative peut être utilisée dans de nombreux domaines :</p>
-        <ul>
-          <li><strong>Marketing</strong> : Rédaction d'articles, génération d'images publicitaires</li>
-          <li><strong>Design</strong> : Création de logos, maquettes, prototypes</li>
-          <li><strong>Développement</strong> : Génération de code, documentation</li>
-          <li><strong>Éducation</strong> : Création de cours, explications personnalisées</li>
-        </ul>
-        <div class="highlight"><strong>💼 Exemple :</strong> Un entrepreneur peut générer un logo, une description de produit et des visuels publicitaires en quelques minutes.</div>`,
-        quiz: {
-          question: 'L\'IA générative peut-elle être utilisée pour le marketing ?',
-          options: ['Oui', 'Non', 'Seulement pour les grandes entreprises'],
-          correct: 0
-        }
-      },
-      {
-        title: 'Éthique et limites de l\'IA',
-        content: `<p>L'IA générative a des limites importantes à connaître :</p>
-        <ul>
-          <li><strong>Hallucinations</strong> : L'IA peut inventer des informations</li>
-          <li><strong>Biais</strong> : Les modèles peuvent reproduire des préjugés</li>
-          <li><strong>Copyright</strong> : Attention aux droits d'auteur</li>
-          <li><strong>Vérification</strong> : Toujours vérifier les informations générées</li>
-        </ul>
-        <div class="highlight"><strong>⚠️ Important :</strong> L'IA est un outil d'assistance, pas un remplacement du jugement humain.</div>`,
-        quiz: {
-          question: 'Que signifie "hallucination" dans le contexte de l\'IA ?',
-          options: ['L\'IA voit des choses qui n\'existent pas', 'L\'IA invente des informations fausses', 'L\'IA rêve pendant la nuit'],
-          correct: 1
-        }
-      }
-    ]
-  }, {
-    id: 'fbads',
-    title: 'Facebook Ads',
-    icon: 'fa-bullhorn',
-    color: 'linear-gradient(135deg, #1877F2, #42A5F5)',
-    description: 'Maîtrisez la publicité sur Facebook et Instagram : création de campagnes, ciblage, optimisation et analyse des résultats.',
-    chapters: [
-      {
-        title: 'Introduction à Facebook Ads',
-        content: `<p>Facebook Ads est la plateforme de publicité de Meta, permettant de diffuser des annonces sur Facebook, Instagram, Messenger et le réseau Audience Network.</p>
-        <div class="highlight"><strong>📊 Statistique :</strong> Plus de 2 milliards de personnes utilisent Facebook chaque mois.</div>
-        <ul>
-          <li><strong>Objectifs</strong> : Notoriété, trafic, conversions, ventes</li>
-          <li><strong>Formats</strong> : Image, vidéo, carrousel, collection</li>
-          <li><strong>Ciblage</strong> : Démographique, centres d'intérêt, comportement</li>
-        </ul>`,
-        quiz: {
-          question: 'Combien de personnes utilisent Facebook chaque mois ?',
-          options: ['1 milliard', '2 milliards', '3 milliards'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Création d\'une campagne',
-        content: `<p>La création d'une campagne publicitaire suit un processus structuré :</p>
-        <ul>
-          <li><strong>Étape 1</strong> : Définir votre objectif publicitaire</li>
-          <li><strong>Étape 2</strong> : Choisir votre audience cible</li>
-          <li><strong>Étape 3</strong> : Définir votre budget et votre calendrier</li>
-          <li><strong>Étape 4</strong> : Créer vos annonces (visuels + texte)</li>
-          <li><strong>Étape 5</strong> : Lancer et suivre les performances</li>
-        </ul>
-        <div class="highlight"><strong>💡 Conseil :</strong> Commencez avec un petit budget pour tester et optimiser avant d'investir massivement.</div>`,
-        quiz: {
-          question: 'Quelle est la première étape de la création d\'une campagne ?',
-          options: ['Créer les annonces', 'Définir l\'objectif', 'Choisir le budget'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Ciblage et audience',
-        content: `<p>Le ciblage est la clé du succès d'une campagne Facebook Ads.</p>
-        <ul>
-          <li><strong>Ciblage démographique</strong> : Âge, genre, localisation, langue</li>
-          <li><strong>Centres d'intérêt</strong> : Hobbies, passions, pages suivies</li>
-          <li><strong>Comportements</strong> : Achat en ligne, voyages, jeux</li>
-          <li><strong>Custom Audiences</strong> : Utilisez vos propres listes de contacts</li>
-          <li><strong>Lookalike Audiences</strong> : Trouvez des personnes similaires à vos clients</li>
-        </ul>
-        <div class="highlight"><strong>🎯 Astuce :</strong> Utilisez le ciblage large au début, puis affinez en fonction des résultats.</div>`,
-        quiz: {
-          question: 'Que sont les "Custom Audiences" ?',
-          options: ['Des audiences prédéfinies par Facebook', 'Vos propres listes de contacts', 'Des audiences basées sur les centres d\'intérêt'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Optimisation des annonces',
-        content: `<p>L'optimisation est essentielle pour améliorer vos résultats publicitaires.</p>
-        <ul>
-          <li><strong>A/B Testing</strong> : Testez différentes versions de vos annonces</li>
-          <li><strong>Creative</strong> : Utilisez des visuels et des textes accrocheurs</li>
-          <li><strong>Call-to-Action</strong> : Incitez à l'action (Acheter, S'inscrire, En savoir plus)</li>
-          <li><strong>Landing Page</strong> : Assurez-vous que votre page est optimisée</li>
-        </ul>
-        <div class="highlight"><strong>📈 Indicateurs clés :</strong> CTR, CPC, ROI, Taux de conversion.</div>`,
-        quiz: {
-          question: 'Que signifie A/B Testing ?',
-          options: ['Tester deux versions d\'une annonce', 'Tester deux budgets différents', 'Tester deux audiences différentes'],
-          correct: 0
-        }
-      },
-      {
-        title: 'Analyse des résultats',
-        content: `<p>L'analyse des résultats vous permet d'optimiser vos campagnes en continu.</p>
-        <ul>
-          <li><strong>Facebook Ads Manager</strong> : L'outil principal d'analyse</li>
-          <li><strong>KPI à suivre</strong> : Portée, impressions, clics, conversions</li>
-          <li><strong>Retour sur investissement</strong> : Mesurez vos gains par rapport à vos dépenses</li>
-          <li><strong>Rapports personnalisés</strong> : Créez des tableaux de bord sur mesure</li>
-        </ul>
-        <div class="highlight"><strong>📊 Bonne pratique :</strong> Analysez vos résultats au moins une fois par semaine pour ajuster vos campagnes.</div>`,
-        quiz: {
-          question: 'Quel est l\'outil principal d\'analyse Facebook Ads ?',
-          options: ['Google Analytics', 'Facebook Ads Manager', 'Meta Business Suite'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Stratégies avancées',
-        content: `<p>Pour aller plus loin avec Facebook Ads :</p>
-        <ul>
-          <li><strong>Retargeting</strong> : Ciblez les personnes qui ont déjà interagi avec vous</li>
-          <li><strong>Funnel marketing</strong> : Créez des campagnes pour chaque étape du parcours client</li>
-          <li><strong>Automatisation</strong> : Utilisez les règles automatiques pour optimiser</li>
-          <li><strong>Cross-channel</strong> : Combinez Facebook avec d'autres canaux (Google, TikTok)</li>
-        </ul>
-        <div class="highlight"><strong>🚀 Stratégie gagnante :</strong> Combinez le retargeting avec des offres exclusives pour maximiser vos conversions.</div>`,
-        quiz: {
-          question: 'Que signifie le retargeting ?',
-          options: ['Cibler des personnes qui ont déjà interagi avec vous', 'Cibler de nouvelles personnes', 'Cibler des personnes aléatoires'],
-          correct: 0
-        }
-      }
-    ]
-  }, {
-    id: 'retouche',
-    title: 'Retouche Photo',
-    icon: 'fa-image',
-    color: 'linear-gradient(135deg, #e67e22, #f39c12)',
-    description: 'Apprenez à retoucher vos photos comme un pro avec Photoshop, Lightroom et les outils IA de retouche.',
-    chapters: [
-      {
-        title: 'Introduction à la retouche',
-        content: `<p>La retouche photo est l'art d'améliorer, corriger ou transformer des images pour obtenir le résultat souhaité.</p>
-        <div class="highlight"><strong>📸 Pourquoi retoucher ?</strong> Pour corriger les défauts, améliorer l'esthétique ou créer des effets artistiques.</div>
-        <ul>
-          <li><strong>Outils principaux</strong> : Photoshop, Lightroom, GIMP</li>
-          <li><strong>Types de retouche</strong> : Corrective, créative, technique</li>
-          <li><strong>Formats</strong> : RAW, JPEG, PNG</li>
-        </ul>`,
-        quiz: {
-          question: 'Quel est l\'outil de retouche le plus connu ?',
-          options: ['Photoshop', 'Canva', 'Paint'],
-          correct: 0
-        }
-      },
-      {
-        title: 'Les outils de base',
-        content: `<p>Maîtrisez les outils essentiels pour commencer :</p>
-        <ul>
-          <li><strong>Sélection</strong> : Lasso, baguette magique, sélection rapide</li>
-          <li><strong>Recadrage</strong> : Couper et redimensionner vos photos</li>
-          <li><strong>Niveaux</strong> : Ajuster les tons clairs, moyens et sombres</li>
-          <li><strong>Courbes</strong> : Contrôle précis de la luminosité et du contraste</li>
-        </ul>
-        <div class="highlight"><strong>💡 Conseil :</strong> Maîtrisez les niveaux avant d'aborder les outils plus avancés.</div>`,
-        quiz: {
-          question: 'Quel outil permet d\'ajuster les tons de l\'image ?',
-          options: ['Niveaux', 'Filtres', 'Calques'],
-          correct: 0
-        }
-      },
-      {
-        title: 'La couleur et la lumière',
-        content: `<p>La couleur et la lumière sont les éléments fondamentaux de la photographie.</p>
-        <ul>
-          <li><strong>Balance des blancs</strong> : Corrigez les dominantes de couleur</li>
-          <li><strong>Teinte/Saturation</strong> : Ajustez l'intensité des couleurs</li>
-          <li><strong>Luminosité</strong> : Éclairez ou assombrissez votre image</li>
-          <li><strong>Contraste</strong> : Augmentez ou diminuez l'écart entre les tons</li>
-        </ul>
-        <div class="highlight"><strong>🎨 Astuce :</strong> Utilisez des calques de réglage pour un contrôle non destructif.</div>`,
-        quiz: {
-          question: 'Quel réglage corrige les dominantes de couleur ?',
-          options: ['Balance des blancs', 'Contraste', 'Luminosité'],
-          correct: 0
-        }
-      },
-      {
-        title: 'La peau et le portrait',
-        content: `<p>La retouche portrait est l'une des applications les plus courantes de la retouche photo.</p>
-        <ul>
-          <li><strong>Lissage</strong> : Atténuez les imperfections sans perdre les détails</li>
-          <li><strong>Taches</strong> : Supprimez les boutons, cicatrices et autres défauts</li>
-          <li><strong>Yeux</strong> : Éclaircissez et renforcez le regard</li>
-          <li><strong>Dents</strong> : Blanchissez les dents pour un sourire éclatant</li>
-        </ul>
-        <div class="highlight"><strong>👩 Technique :</strong> Utilisez la technique de la "fréquence séparation" pour un lissage naturel.</div>`,
-        quiz: {
-          question: 'Quelle technique est utilisée pour un lissage naturel de la peau ?',
-          options: ['Flou gaussien', 'Fréquence séparation', 'Luminosité'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Les effets et filtres',
-        content: `<p>Les effets et filtres permettent de donner un style unique à vos photos.</p>
-        <ul>
-          <li><strong>Filtres artistiques</strong> : Aquarelle, fusain, huile</li>
-          <li><strong>Effets de lumière</strong> : Rayons, flares, lueurs</li>
-          <li><strong>Texture</strong> : Ajoutez de la matière à vos images</li>
-          <li><strong>Noir et blanc</strong> : La puissance de la photographie monochrome</li>
-        </ul>
-        <div class="highlight"><strong>🌟 Astuce :</strong> Moins c'est plus. Utilisez les effets avec parcimonie pour un résultat professionnel.</div>`,
-        quiz: {
-          question: 'Quel est l\'effet le plus puissant en photographie ?',
-          options: ['Noir et blanc', 'Sélection de couleur', 'Flou'],
-          correct: 0
-        }
-      },
-      {
-        title: 'La composition et le cadrage',
-        content: `<p>La composition est l'art de disposer les éléments dans votre image.</p>
-        <ul>
-          <li><strong>Règle des tiers</strong> : Placez les éléments clés sur les lignes de force</li>
-          <li><strong>Lignes directrices</strong> : Guidez le regard du spectateur</li>
-          <li><strong>Profondeur</strong> : Créez une sensation de 3D</li>
-          <li><strong>Équilibre</strong> : Distribuez le poids visuel harmonieusement</li>
-        </ul>
-        <div class="highlight"><strong>📐 Conseil :</strong> Activez le quadrillage de votre appareil photo pour appliquer la règle des tiers.</div>`,
-        quiz: {
-          question: 'Quelle est la règle de composition la plus connue ?',
-          options: ['Règle des tiers', 'Règle de trois', 'Règle des contrastes'],
-          correct: 0
-        }
-      }
-    ]
-  }, {
-    id: 'design',
-    title: 'Design Graphique',
-    icon: 'fa-pen-ruler',
-    color: 'linear-gradient(135deg, #e74c3c, #e67e22)',
-    description: 'Les fondamentaux du design : typographie, couleurs, composition, et utilisation de Canva, Figma et Photoshop.',
-    chapters: [
-      {
-        title: 'Introduction au design',
-        content: `<p>Le design graphique est l'art de communiquer visuellement des messages et des idées.</p>
-        <div class="highlight"><strong>🎯 Objectif :</strong> Le design résout des problèmes de communication.</div>
-        <ul>
-          <li><strong>Principes de base</strong> : Équilibre, contraste, hiérarchie</li>
-          <li><strong>Éléments</strong> : Ligne, forme, couleur, texture, typographie</li>
-          <li><strong>Domaines</strong> : Identité visuelle, print, digital, packaging</li>
-        </ul>`,
-        quiz: {
-          question: 'Quel est l\'objectif principal du design graphique ?',
-          options: ['Faire beau', 'Communiquer efficacement', 'Vendre des produits'],
-          correct: 1
-        }
-      },
-      {
-        title: 'La typographie',
-        content: `<p>La typographie est l'art de disposer les caractères pour rendre le texte lisible et attrayant.</p>
-        <ul>
-          <li><strong>Familles de polices</strong> : Serif, Sans-serif, Script, Display</li>
-          <li><strong>Hiérarchie</strong> : Titres, sous-titres, corps de texte</li>
-          <li><strong>Espacement</strong> : Interlettrage, interlignage, alignement</li>
-          <li><strong>Choix</strong> : La bonne police au bon endroit</li>
-        </ul>
-        <div class="highlight"><strong>📝 Règle :</strong> Limitez-vous à 2-3 polices par projet pour un résultat harmonieux.</div>`,
-        quiz: {
-          question: 'Combien de polices sont recommandées par projet ?',
-          options: ['1', '2-3', '5-6'],
-          correct: 1
-        }
-      },
-      {
-        title: 'La couleur',
-        content: `<p>La couleur est un des éléments les plus puissants du design.</p>
-        <ul>
-          <li><strong>Psychologie des couleurs</strong> : L'impact émotionnel des couleurs</li>
-          <li><strong>Palettes</strong> : Monochromatique, complémentaire, triadique</li>
-          <li><strong>Contraste</strong> : Assurez la lisibilité et l'impact</li>
-          <li><strong>Codes</strong> : RGB, CMYK, HEX, HSL</li>
-        </ul>
-        <div class="highlight"><strong>🎨 Astuce :</strong> Utilisez le cercle chromatique pour créer des combinaisons harmonieuses.</div>`,
-        quiz: {
-          question: 'Quelle couleur est souvent associée à la confiance en design ?',
-          options: ['Rouge', 'Bleu', 'Vert'],
-          correct: 1
-        }
-      },
-      {
-        title: 'La composition',
-        content: `<p>La composition est la façon dont vous organisez les éléments dans votre espace de design.</p>
-        <ul>
-          <li><strong>Grilles</strong> : Structurez votre mise en page</li>
-          <li><strong>Équilibre</strong> : Symétrique, asymétrique, radial</li>
-          <li><strong>Proximité</strong> : Groupez les éléments liés</li>
-          <li><strong>Répétition</strong> : Créez une cohérence visuelle</li>
-        </ul>
-        <div class="highlight"><strong>📐 Règle d\'or :</strong> La règle des tiers s'applique aussi au design graphique.</div>`,
-        quiz: {
-          question: 'La règle des tiers s\'applique-t-elle au design graphique ?',
-          options: ['Oui', 'Non', 'Seulement en photographie'],
-          correct: 0
-        }
-      },
-      {
-        title: 'Les outils du designer',
-        content: `<p>Les designers utilisent une variété d'outils pour donner vie à leurs créations.</p>
-        <ul>
-          <li><strong>Adobe Creative Cloud</strong> : Photoshop, Illustrator, InDesign</li>
-          <li><strong>Figma</strong> : Design d'interfaces et collaboration</li>
-          <li><strong>Canva</strong> : Design accessible pour tous</li>
-          <li><strong>Affinity</strong> : Alternative à Adobe</li>
-        </ul>
-        <div class="highlight"><strong>💡 Conseil :</strong> Commencez avec Canva, puis passez à Photoshop ou Figma.</div>`,
-        quiz: {
-          question: 'Quel outil est le plus accessible pour les débutants ?',
-          options: ['Photoshop', 'Canva', 'Figma'],
-          correct: 1
-        }
-      },
-      {
-        title: 'Les tendances du design',
-        content: `<p>Le design évolue constamment avec les tendances et les technologies.</p>
-        <ul>
-          <li><strong>Minimalisme</strong> : Moins c'est plus</li>
-          <li><strong>Design durable</strong> : Écologique et éthique</li>
-          <li><strong>3D et immersif</strong> : Nouvelles dimensions du design</li>
-          <li><strong>IA en design</strong> : L'intelligence artificielle comme assistant</li>
-        </ul>
-        <div class="highlight"><strong>🔮 Avenir :</strong> Le design deviendra de plus en plus interactif et personnalisé grâce à l'IA.</div>`,
-        quiz: {
-          question: 'Quelle tendance actuelle prône "moins c\'est plus" ?',
-          options: ['Minimalisme', 'Maximalisme', 'Design durable'],
-          correct: 0
-        }
-      }
-    ]
-  }];
+  const coursesData = {
+    cybersec: {
+      title: 'Cyber-sécurité',
+      icon: 'fa-shield-halved',
+      color: 'linear-gradient(135deg, #1a3fa5, #2d5be3)',
+      totalChapters: 8,
+      chapters: [
+        { title: 'Introduction à la cybersécurité', content: '<p>La cybersécurité est l\'ensemble des pratiques, technologies et processus conçus pour protéger les réseaux, les appareils, les programmes et les données contre les attaques, les dommages ou les accès non autorisés.</p><div class="highlight"><strong>💡 Pourquoi c\'est important ?</strong> En 2024, une attaque par ransomware a lieu toutes les 11 secondes dans le monde.</div><ul><li><strong>Confidentialité</strong> : Seules les personnes autorisées ont accès aux données</li><li><strong>Intégrité</strong> : Les données sont exactes et non modifiées sans autorisation</li><li><strong>Disponibilité</strong> : Les données sont accessibles quand nécessaire</li></ul>', quiz: { question: 'Quels sont les 3 piliers de la cybersécurité ?', options: ['Confidentialité, Intégrité, Disponibilité', 'Sécurité, Rapidité, Fiabilité', 'Protection, Sauvegarde, Restauration'], correct: 0 } },
+        { title: 'Les menaces numériques', content: '<p>Les menaces numériques sont nombreuses et évoluent constamment.</p><ul><li><strong>Virus et malwares</strong> : Logiciels malveillants</li><li><strong>Phishing</strong> : Tentative d\'obtenir vos informations personnelles</li><li><strong>Ransomware</strong> : Virus qui bloque vos fichiers</li></ul>', quiz: { question: 'Quelle menace bloque vos fichiers pour demander une rançon ?', options: ['Phishing', 'Ransomware', 'DDoS'], correct: 1 } },
+        { title: 'Mots de passe sécurisés', content: '<p>Un mot de passe fort est la première barrière contre les intrusions.</p><ul><li><strong>Longueur</strong> : Au moins 12 caractères</li><li><strong>Complexité</strong> : Majuscules, minuscules, chiffres, symboles</li><li><strong>Unicité</strong> : Un mot de passe différent pour chaque service</li></ul>', quiz: { question: 'Quelle est la longueur minimale recommandée ?', options: ['6 caractères', '8 caractères', '12 caractères'], correct: 2 } },
+        { title: 'Authentification à deux facteurs', content: '<p>L\'authentification à deux facteurs (2FA) ajoute une couche de sécurité supplémentaire.</p><ul><li><strong>Facteur 1</strong> : Ce que vous savez (mot de passe)</li><li><strong>Facteur 2</strong> : Ce que vous possédez (téléphone)</li></ul>', quiz: { question: 'La 2FA utilise combien de facteurs ?', options: ['1', '2', '3'], correct: 1 } },
+        { title: 'Protection des données', content: '<p>La protection des données est essentielle pour préserver votre vie privée.</p><ul><li><strong>Chiffrement</strong> : Transformez vos données en code illisible</li><li><strong>Sauvegarde</strong> : Faites des copies régulières</li></ul>', quiz: { question: 'La règle 3-2-1 recommande combien de copies ?', options: ['2', '3', '4'], correct: 1 } },
+        { title: 'Sécurité des réseaux', content: '<p>La sécurité des réseaux protège votre connexion.</p><ul><li><strong>VPN</strong> : Cache votre adresse IP</li><li><strong>WPA3</strong> : Standard de sécurité Wi-Fi</li><li><strong>Pare-feu</strong> : Filtre le trafic réseau</li></ul>', quiz: { question: 'Que signifie VPN ?', options: ['Virtual Private Network', 'Very Personal Network', 'Visual Private Network'], correct: 0 } },
+        { title: 'Antivirus et pare-feu', content: '<p>Les antivirus et pare-feu sont vos premières lignes de défense.</p><ul><li><strong>Antivirus</strong> : Détecte les malwares</li><li><strong>Pare-feu</strong> : Bloque les accès non autorisés</li></ul>', quiz: { question: 'À quelle fréquence analyser votre système ?', options: ['Une fois par mois', 'Une fois par semaine', 'Une fois par jour'], correct: 1 } },
+        { title: 'Bonnes pratiques', content: '<p>Adoptez ces bonnes pratiques :</p><ul><li><strong>Mises à jour</strong> : Activez les mises à jour automatiques</li><li><strong>Téléchargements</strong> : Sources officielles uniquement</li><li><strong>Formation</strong> : Formez-vous et formez votre équipe</li></ul>', quiz: { question: 'Quelle est la meilleure pratique pour les mises à jour ?', options: ['Automatiques', 'Manuelles mensuelles', 'Jamais'], correct: 0 } }
+      ]
+    },
+    ia: {
+      title: 'IA Générative',
+      icon: 'fa-robot',
+      color: 'linear-gradient(135deg, #7c2d9e, #b05fd6)',
+      totalChapters: 6,
+      chapters: [
+        { title: 'Qu\'est-ce que l\'IA générative ?', content: '<p>L\'IA générative est une technologie capable de créer du contenu original à partir d\'instructions.</p><ul><li><strong>Modèles de langage</strong> : ChatGPT, Claude, Gemini</li><li><strong>Génération d\'images</strong> : Midjourney, DALL·E</li></ul>', quiz: { question: 'L\'IA générative peut-elle créer du code ?', options: ['Oui', 'Non', 'Seulement du texte'], correct: 0 } },
+        { title: 'ChatGPT et les modèles de langage', content: '<p>ChatGPT est un modèle de langage développé par OpenAI.</p><ul><li><strong>GPT-4</strong> : Version avancée</li><li><strong>Alternatives</strong> : Claude, Gemini, Mistral</li></ul>', quiz: { question: 'Qui a développé ChatGPT ?', options: ['Google', 'OpenAI', 'Microsoft'], correct: 1 } },
+        { title: 'Midjourney et la génération d\'images', content: '<p>Midjourney est un outil de génération d\'images via Discord.</p><ul><li><strong>Prompts</strong> : Descriptions détaillées</li><li><strong>Paramètres</strong> : Qualité, format, style</li></ul>', quiz: { question: 'Sur quelle plateforme Midjourney est-il accessible ?', options: ['Discord', 'WhatsApp', 'Telegram'], correct: 0 } },
+        { title: 'DALL·E et la création visuelle', content: '<p>DALL·E est l\'outil d\'OpenAI pour la génération d\'images.</p><ul><li><strong>DALL·E 3</strong> : Dernière version</li><li><strong>Intégration</strong> : Directement via ChatGPT</li></ul>', quiz: { question: 'Quelle société a développé DALL·E ?', options: ['Google', 'OpenAI', 'Midjourney'], correct: 1 } },
+        { title: 'Applications pratiques', content: '<p>L\'IA générative peut être utilisée dans :</p><ul><li><strong>Marketing</strong> : Rédaction, images publicitaires</li><li><strong>Design</strong> : Logos, maquettes</li><li><strong>Développement</strong> : Génération de code</li></ul>', quiz: { question: 'L\'IA générative peut-elle être utilisée pour le marketing ?', options: ['Oui', 'Non', 'Seulement pour les grandes entreprises'], correct: 0 } },
+        { title: 'Éthique et limites de l\'IA', content: '<p>L\'IA générative a des limites :</p><ul><li><strong>Hallucinations</strong> : L\'IA peut inventer des informations</li><li><strong>Biais</strong> : Les modèles peuvent reproduire des préjugés</li><li><strong>Vérification</strong> : Toujours vérifier les informations</li></ul>', quiz: { question: 'Que signifie "hallucination" dans l\'IA ?', options: ['L\'IA voit des choses', 'L\'IA invente des informations', 'L\'IA rêve'], correct: 1 } }
+      ]
+    },
+    fbads: {
+      title: 'Facebook Ads',
+      icon: 'fa-bullhorn',
+      color: 'linear-gradient(135deg, #1877F2, #42A5F5)',
+      totalChapters: 6,
+      chapters: [
+        { title: 'Introduction à Facebook Ads', content: '<p>Facebook Ads est la plateforme publicitaire de Meta.</p><ul><li><strong>Objectifs</strong> : Notoriété, trafic, conversions</li><li><strong>Formats</strong> : Image, vidéo, carrousel</li></ul>', quiz: { question: 'Combien de personnes utilisent Facebook chaque mois ?', options: ['1 milliard', '2 milliards', '3 milliards'], correct: 1 } },
+        { title: 'Création d\'une campagne', content: '<p>Étapes de création :</p><ul><li>Définir l\'objectif</li><li>Choisir l\'audience</li><li>Définir le budget</li><li>Créer les annonces</li></ul>', quiz: { question: 'Quelle est la première étape ?', options: ['Créer les annonces', 'Définir l\'objectif', 'Choisir le budget'], correct: 1 } },
+        { title: 'Ciblage et audience', content: '<p>Types de ciblage :</p><ul><li><strong>Démographique</strong> : Âge, genre, localisation</li><li><strong>Centres d\'intérêt</strong> : Hobbies, passions</li><li><strong>Custom Audiences</strong> : Vos listes de contacts</li></ul>', quiz: { question: 'Que sont les "Custom Audiences" ?', options: ['Audiences prédéfinies', 'Vos listes de contacts', 'Centres d\'intérêt'], correct: 1 } },
+        { title: 'Optimisation des annonces', content: '<p>Pour optimiser :</p><ul><li><strong>A/B Testing</strong> : Testez différentes versions</li><li><strong>Creative</strong> : Visuels et textes accrocheurs</li><li><strong>Call-to-Action</strong> : Incitez à l\'action</li></ul>', quiz: { question: 'Que signifie A/B Testing ?', options: ['Tester deux versions', 'Tester deux budgets', 'Tester deux audiences'], correct: 0 } },
+        { title: 'Analyse des résultats', content: '<p>Outils d\'analyse :</p><ul><li><strong>Facebook Ads Manager</strong> : Outil principal</li><li><strong>KPI</strong> : Portée, clics, conversions</li><li><strong>ROI</strong> : Retour sur investissement</li></ul>', quiz: { question: 'Quel est l\'outil principal d\'analyse ?', options: ['Google Analytics', 'Facebook Ads Manager', 'Meta Business Suite'], correct: 1 } },
+        { title: 'Stratégies avancées', content: '<p>Pour aller plus loin :</p><ul><li><strong>Retargeting</strong> : Ciblez les personnes déjà intéressées</li><li><strong>Funnel marketing</strong> : Parcours client</li><li><strong>Automatisation</strong> : Règles automatiques</li></ul>', quiz: { question: 'Que signifie le retargeting ?', options: ['Cibler les personnes déjà intéressées', 'Cibler de nouvelles personnes', 'Cibler des personnes aléatoires'], correct: 0 } }
+      ]
+    },
+    retouche: {
+      title: 'Retouche Photo',
+      icon: 'fa-image',
+      color: 'linear-gradient(135deg, #e67e22, #f39c12)',
+      totalChapters: 6,
+      chapters: [
+        { title: 'Introduction à la retouche', content: '<p>La retouche photo est l\'art d\'améliorer les images.</p><ul><li><strong>Outils</strong> : Photoshop, Lightroom, GIMP</li><li><strong>Types</strong> : Corrective, créative, technique</li></ul>', quiz: { question: 'Quel est l\'outil le plus connu ?', options: ['Photoshop', 'Canva', 'Paint'], correct: 0 } },
+        { title: 'Les outils de base', content: '<p>Outils essentiels :</p><ul><li><strong>Sélection</strong> : Lasso, baguette magique</li><li><strong>Recadrage</strong> : Couper et redimensionner</li><li><strong>Niveaux</strong> : Ajuster les tons</li></ul>', quiz: { question: 'Quel outil ajuste les tons de l\'image ?', options: ['Niveaux', 'Filtres', 'Calques'], correct: 0 } },
+        { title: 'La couleur et la lumière', content: '<p>Éléments fondamentaux :</p><ul><li><strong>Balance des blancs</strong> : Corrige les dominantes</li><li><strong>Teinte/Saturation</strong> : Intensité des couleurs</li><li><strong>Luminosité/Contraste</strong> : Éclairage</li></ul>', quiz: { question: 'Quel réglage corrige les dominantes de couleur ?', options: ['Balance des blancs', 'Contraste', 'Luminosité'], correct: 0 } },
+        { title: 'La peau et le portrait', content: '<p>Techniques de retouche portrait :</p><ul><li><strong>Lissage</strong> : Atténuer les imperfections</li><li><strong>Taches</strong> : Supprimer les défauts</li><li><strong>Yeux</strong> : Éclaircir le regard</li></ul>', quiz: { question: 'Quelle technique pour un lissage naturel ?', options: ['Flou gaussien', 'Fréquence séparation', 'Luminosité'], correct: 1 } },
+        { title: 'Les effets et filtres', content: '<p>Effets pour donner du style :</p><ul><li><strong>Filtres artistiques</strong> : Aquarelle, fusain</li><li><strong>Effets de lumière</strong> : Rayons, flares</li><li><strong>Noir et blanc</strong> : Monochrome puissant</li></ul>', quiz: { question: 'Quel effet est le plus puissant ?', options: ['Noir et blanc', 'Sélection de couleur', 'Flou'], correct: 0 } },
+        { title: 'La composition et le cadrage', content: '<p>Règles de composition :</p><ul><li><strong>Règle des tiers</strong> : Lignes de force</li><li><strong>Lignes directrices</strong> : Guide du regard</li><li><strong>Profondeur</strong> : Sensation de 3D</li></ul>', quiz: { question: 'Quelle est la règle de composition la plus connue ?', options: ['Règle des tiers', 'Règle de trois', 'Règle des contrastes'], correct: 0 } }
+      ]
+    },
+    design: {
+      title: 'Design Graphique',
+      icon: 'fa-pen-ruler',
+      color: 'linear-gradient(135deg, #e74c3c, #e67e22)',
+      totalChapters: 6,
+      chapters: [
+        { title: 'Introduction au design', content: '<p>Le design graphique est l\'art de communiquer visuellement.</p><ul><li><strong>Principes</strong> : Équilibre, contraste, hiérarchie</li><li><strong>Éléments</strong> : Ligne, forme, couleur, typographie</li></ul>', quiz: { question: 'Quel est l\'objectif principal du design ?', options: ['Faire beau', 'Communiquer efficacement', 'Vendre des produits'], correct: 1 } },
+        { title: 'La typographie', content: '<p>La typographie est l\'art de disposer les caractères.</p><ul><li><strong>Familles</strong> : Serif, Sans-serif, Script</li><li><strong>Hiérarchie</strong> : Titres, sous-titres, corps</li></ul>', quiz: { question: 'Combien de polices sont recommandées par projet ?', options: ['1', '2-3', '5-6'], correct: 1 } },
+        { title: 'La couleur', content: '<p>La couleur est un élément puissant.</p><ul><li><strong>Psychologie</strong> : Impact émotionnel</li><li><strong>Palettes</strong> : Monochromatique, complémentaire</li><li><strong>Codes</strong> : RGB, CMYK, HEX</li></ul>', quiz: { question: 'Quelle couleur est associée à la confiance ?', options: ['Rouge', 'Bleu', 'Vert'], correct: 1 } },
+        { title: 'La composition', content: '<p>Organisation des éléments :</p><ul><li><strong>Grilles</strong> : Structure</li><li><strong>Équilibre</strong> : Symétrique, asymétrique</li><li><strong>Proximité</strong> : Grouper les éléments liés</li></ul>', quiz: { question: 'La règle des tiers s\'applique-t-elle au design ?', options: ['Oui', 'Non', 'Seulement en photo'], correct: 0 } },
+        { title: 'Les outils du designer', content: '<p>Outils utilisés :</p><ul><li><strong>Adobe Creative Cloud</strong> : Photoshop, Illustrator</li><li><strong>Figma</strong> : Design d\'interfaces</li><li><strong>Canva</strong> : Design accessible</li></ul>', quiz: { question: 'Quel outil est le plus accessible pour les débutants ?', options: ['Photoshop', 'Canva', 'Figma'], correct: 1 } },
+        { title: 'Les tendances du design', content: '<p>Tendances actuelles :</p><ul><li><strong>Minimalisme</strong> : Moins c\'est plus</li><li><strong>Design durable</strong> : Écologique</li><li><strong>3D et immersif</strong> : Nouvelles dimensions</li></ul>', quiz: { question: 'Quelle tendance prône "moins c\'est plus" ?', options: ['Minimalisme', 'Maximalisme', 'Design durable'], correct: 0 } }
+      ]
+    }
+  };
 
   // ============================================================
   // GESTION DES COURS
   // ============================================================
-  let currentCourse = null;
-  let currentChapter = 0;
+  let currentCourseId = null;
+  let currentChapterIndex = 0;
   let completedChapters = {};
 
-  // Charger la progression depuis localStorage
+  // Charger la progression
   function loadProgress() {
     try {
       const saved = localStorage.getItem('courseProgress');
@@ -2534,47 +2157,38 @@
 
   function saveProgress() {
     localStorage.setItem('courseProgress', JSON.stringify(completedChapters));
+    updateAllProgress();
   }
 
-  // Rendre les cartes de cours
-  function renderCourses() {
-    const grid = document.getElementById('coursesGrid');
-    grid.innerHTML = coursesData.map((course, idx) => {
-      const total = course.chapters.length;
-      const completed = course.chapters.filter((_, i) => completedChapters[`${course.id}-${i}`]).length;
-      const progress = Math.round((completed / total) * 100);
-      const icon = course.icon || 'fa-book';
-      const color = course.color || 'linear-gradient(135deg, var(--blue), var(--blue-light))';
-      
-      return `
-        <div class="course-card reveal" onclick="openCoursePlayer('${course.id}')" style="animation-delay: ${idx * 0.1}s">
-          <div class="course-card-img" style="background: ${color}">
-            <i class="fas ${icon}"></i>
-            <span class="course-free-badge"><i class="fas fa-graduation-cap"></i> Gratuit</span>
-            <span class="course-progress-badge">${progress}%</span>
-          </div>
-          <div class="course-card-body">
-            <h3>${course.title}</h3>
-            <p>${course.description}</p>
-            <div class="course-meta">
-              <span><i class="fas fa-book"></i> ${total} chapitres</span>
-              <span><i class="fas fa-check-circle"></i> ${completed} terminés</span>
-            </div>
-            <div class="course-progress-bar">
-              <div class="fill" style="width: ${progress}%"></div>
-            </div>
-            <button class="btn btn-blue"><i class="fas fa-play"></i> ${progress > 0 ? 'Continuer' : 'Commencer'}</button>
-          </div>
-        </div>
-      `;
-    }).join('');
+  function updateAllProgress() {
+    Object.keys(coursesData).forEach(courseId => {
+      updateCourseProgress(courseId);
+    });
   }
 
-  // Ouvrir le player de cours
-  function openCoursePlayer(courseId) {
-    currentCourse = coursesData.find(c => c.id === courseId);
-    if (!currentCourse) return;
-    currentChapter = 0;
+  function updateCourseProgress(courseId) {
+    const course = coursesData[courseId];
+    if (!course) return;
+    const total = course.totalChapters;
+    let completed = 0;
+    for (let i = 0; i < total; i++) {
+      if (completedChapters[`${courseId}-${i}`]) completed++;
+    }
+    const progress = Math.round((completed / total) * 100);
+    
+    const progressBadge = document.getElementById(`progress-${courseId}`);
+    const progressFill = document.getElementById(`progressFill-${courseId}`);
+    const completedSpan = document.getElementById(`completed-${courseId}`);
+    
+    if (progressBadge) progressBadge.textContent = `${progress}%`;
+    if (progressFill) progressFill.style.width = `${progress}%`;
+    if (completedSpan) completedSpan.textContent = completed;
+  }
+
+  // Ouvrir un cours
+  function openCourse(courseId) {
+    currentCourseId = courseId;
+    currentChapterIndex = 0;
     renderChapter();
     document.getElementById('coursePlayerOverlay').classList.add('open');
     document.body.style.overflow = 'hidden';
@@ -2587,23 +2201,21 @@
   }
 
   function renderChapter() {
-    const container = document.getElementById('coursePlayerContent');
-    const course = currentCourse;
-    const chapter = course.chapters[currentChapter];
+    const course = coursesData[currentCourseId];
+    if (!course) return;
+    const chapter = course.chapters[currentChapterIndex];
     const total = course.chapters.length;
-    const isCompleted = completedChapters[`${course.id}-${currentChapter}`] || false;
+    const isCompleted = completedChapters[`${currentCourseId}-${currentChapterIndex}`] || false;
     
-    // Vérifier si le chapitre précédent est complété
-    const prevCompleted = currentChapter === 0 || completedChapters[`${course.id}-${currentChapter-1}`] || false;
-    
+    const container = document.getElementById('coursePlayerContent');
     container.innerHTML = `
       <div class="course-player-header">
-        <div class="course-icon" style="background: ${course.color || 'var(--blue)'}">
-          <i class="fas ${course.icon || 'fa-book'}"></i>
+        <div class="course-icon" style="background: ${course.color}">
+          <i class="fas ${course.icon}"></i>
         </div>
         <h2>${course.title}</h2>
         <div class="course-stats">
-          <span>${currentChapter + 1} / ${total} chapitres</span>
+          <span>${currentChapterIndex + 1} / ${total} chapitres</span>
           ${isCompleted ? ' <span style="color:var(--green)"><i class="fas fa-check-circle"></i> ✅</span>' : ''}
         </div>
       </div>
@@ -2616,23 +2228,23 @@
           </div>
           
           ${chapter.quiz ? `
-            <div class="chapter-quiz" data-chapter="${currentChapter}">
+            <div class="chapter-quiz" data-chapter="${currentChapterIndex}">
               <h4><i class="fas fa-question-circle"></i> Quiz : ${chapter.quiz.question}</h4>
               ${chapter.quiz.options.map((opt, i) => `
-                <label class="quiz-option" data-index="${i}" onclick="checkQuizAnswer(${i}, ${currentChapter})">
+                <label class="quiz-option" data-index="${i}" onclick="checkQuizAnswer(${i}, ${currentChapterIndex})">
                   <input type="radio" name="quiz" value="${i}"/> ${opt}
                 </label>
               `).join('')}
-              <div class="quiz-feedback" id="quizFeedback${currentChapter}"></div>
+              <div class="quiz-feedback" id="quizFeedback${currentChapterIndex}"></div>
             </div>
           ` : ''}
           
           <div class="course-nav">
-            <button class="btn btn-outline" onclick="prevChapter()" ${currentChapter === 0 ? 'disabled' : ''}>
+            <button class="btn btn-outline" onclick="prevChapter()" ${currentChapterIndex === 0 ? 'disabled style="opacity:0.5;cursor:not-allowed;"' : ''}>
               <i class="fas fa-chevron-left"></i> Précédent
             </button>
             <button class="btn btn-green" onclick="nextChapter()">
-              ${currentChapter === total - 1 ? '🎓 Terminer' : 'Suivant <i class="fas fa-chevron-right"></i>'}
+              ${currentChapterIndex === total - 1 ? '🎓 Terminer' : 'Suivant <i class="fas fa-chevron-right"></i>'}
             </button>
           </div>
         </div>
@@ -2640,8 +2252,8 @@
         <div class="chapter-list">
           <h4><i class="fas fa-list"></i> Chapitres</h4>
           ${course.chapters.map((ch, i) => {
-            const isActive = i === currentChapter;
-            const isCompleted = completedChapters[`${course.id}-${i}`] || false;
+            const isActive = i === currentChapterIndex;
+            const isCompleted = completedChapters[`${currentCourseId}-${i}`] || false;
             return `
               <div class="chapter-item ${isActive ? 'active' : ''} ${isCompleted ? 'completed' : ''}" onclick="goToChapter(${i})">
                 <span class="chapter-num">${i + 1}</span>
@@ -2659,58 +2271,54 @@
       </div>
     `;
     
-    // Scroll en haut du contenu
     container.scrollTop = 0;
   }
 
   function goToChapter(index) {
-    if (index > currentChapter && !completedChapters[`${currentCourse.id}-${index-1}`]) {
+    if (index > currentChapterIndex && !completedChapters[`${currentCourseId}-${index-1}`]) {
       alert('Veuillez compléter le chapitre précédent d\'abord.');
       return;
     }
-    currentChapter = index;
+    currentChapterIndex = index;
     renderChapter();
   }
 
   function prevChapter() {
-    if (currentChapter > 0) {
-      currentChapter--;
+    if (currentChapterIndex > 0) {
+      currentChapterIndex--;
       renderChapter();
     }
   }
 
   function nextChapter() {
-    const course = currentCourse;
+    const course = coursesData[currentCourseId];
     const total = course.chapters.length;
     
-    // Vérifier si le quiz du chapitre actuel est complété
-    const chapterData = course.chapters[currentChapter];
+    const chapterData = course.chapters[currentChapterIndex];
     if (chapterData.quiz) {
-      const feedback = document.getElementById(`quizFeedback${currentChapter}`);
+      const feedback = document.getElementById(`quizFeedback${currentChapterIndex}`);
       if (!feedback || !feedback.classList.contains('show') || feedback.classList.contains('wrong')) {
         alert('Veuillez répondre correctement au quiz avant de continuer.');
         return;
       }
     }
     
-    // Marquer le chapitre comme complété
-    completedChapters[`${course.id}-${currentChapter}`] = true;
+    completedChapters[`${currentCourseId}-${currentChapterIndex}`] = true;
     saveProgress();
     
-    if (currentChapter < total - 1) {
-      currentChapter++;
+    if (currentChapterIndex < total - 1) {
+      currentChapterIndex++;
       renderChapter();
     } else {
-      // Tous les chapitres sont complétés
       alert(`🎉 Félicitations ! Vous avez terminé le cours "${course.title}" !`);
       closeCoursePlayer();
-      renderCourses();
+      updateAllProgress();
     }
-    renderCourses();
+    updateAllProgress();
   }
 
   function checkQuizAnswer(index, chapterIndex) {
-    const course = currentCourse;
+    const course = coursesData[currentCourseId];
     const chapter = course.chapters[chapterIndex];
     const feedback = document.getElementById(`quizFeedback${chapterIndex}`);
     const options = document.querySelectorAll(`.chapter-quiz[data-chapter="${chapterIndex}"] .quiz-option`);
@@ -2728,9 +2336,11 @@
       feedback.textContent = `❌ Pas tout à fait. La bonne réponse était : "${chapter.quiz.options[chapter.quiz.correct]}"`;
     }
     
-    // Désactiver les radios
     document.querySelectorAll(`.chapter-quiz[data-chapter="${chapterIndex}"] input[type="radio"]`).forEach(r => r.disabled = true);
   }
+
+  // Initialiser la progression
+  updateAllProgress();
 
   // ============================================================
   // NAVIGATION
@@ -3129,15 +2739,13 @@
   // ============================================================
   // INITIALISATION
   // ============================================================
-  renderCourses();
-
-  console.log('%c ID-Intello Digit %c Version 6.0 - Cours intégrés ',
+  console.log('%c ID-Intello Digit %c Version 6.1 - Cours intégrés en HTML ',
     'background:#1a3fa5;color:#fff;padding:8px 16px;border-radius:4px 0 0 4px;font-weight:bold;',
     'background:#3aad3a;color:#fff;padding:8px 16px;border-radius:0 4px 4px 0;');
-  console.log(' 5 cours complets avec contenu textuel');
-  console.log(' 32 chapitres avec quiz');
-  console.log(' Progression sauvegardée localement');
-  console.log(' Contact : +226 72 33 14 02');
+  console.log('📚 5 cours complets avec contenu textuel');
+  console.log('📝 32 chapitres avec quiz');
+  console.log('✅ Progression sauvegardée localement');
+  console.log('💡 Contact : +226 72 33 14 02');
 </script>
 </body>
 </html>
