@@ -23,7 +23,7 @@
   
   <style>
     /* ============================================================
-       ROOT & RESET - Version Compacte
+       ROOT & RESET - Version Intégration Images
        ============================================================ */
     :root {
       --blue: #1a3fa5;
@@ -84,9 +84,6 @@
     button, input, select, textarea { font-family: inherit; max-width: 100%; }
     .wrap { max-width: var(--max-width); margin: 0 auto; padding: 0 16px; }
 
-    /* ============================================================
-       THEME TOGGLE
-       ============================================================ */
     .theme-toggle {
       background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
       color: #fff; width: 38px; height: 38px; border-radius: 50%;
@@ -187,7 +184,7 @@
     @media(max-width:640px){ .open-badge span:not(.dot) { display: none; } .open-badge { padding: 6px; } }
 
     /* ============================================================
-       HERO - COMPACT
+       HERO
        ============================================================ */
     .hero {
       min-height: 70vh;
@@ -281,7 +278,7 @@
     }
 
     /* ============================================================
-       STATS - COMPACT
+       STATS
        ============================================================ */
     .stats-bar {
       background: var(--white);
@@ -303,7 +300,7 @@
     @media(max-width:600px){ .stat-item { min-width: 45%; border-right: none; } .stat-item:nth-child(2) { border-right: none; } }
 
     /* ============================================================
-       SECTIONS - COMPACT
+       SECTIONS
        ============================================================ */
     section { padding: 50px 16px; width: 100%; max-width: 100vw; }
     .section-tag {
@@ -323,7 +320,7 @@
     .section-sub { color: var(--text-muted); font-size: clamp(0.9rem, 0.95vw, 0.95rem); line-height: 1.6; max-width: 520px; }
 
     /* ============================================================
-       SERVICES - COMPACT
+       SERVICES
        ============================================================ */
     #services { background: var(--white); }
     .services-grid {
@@ -343,6 +340,7 @@
       padding: 18px 20px 14px;
       display: flex; align-items: center; gap: 12px;
     }
+    .service-card-head img { width: 40px; height: 40px; object-fit: contain; border-radius: 8px; }
     .service-card-head i { font-size: 1.6rem; }
     .service-card-head h3 { font-family: var(--font-exo); font-size: 1.05rem; font-weight: 800; color: #fff; }
     .service-card-body { background: #fff; padding: 14px 20px 18px; }
@@ -361,7 +359,7 @@
     .card-divers .service-card-head { background: linear-gradient(135deg, var(--green-dark), var(--green-light)); }
 
     /* ============================================================
-       COURS - COMPACT
+       COURS
        ============================================================ */
     #courses { background: var(--gray-light); }
     .courses-grid {
@@ -393,6 +391,8 @@
       color: #fff;
       position: relative;
     }
+    .course-card-img img { width: 100%; height: 100%; object-fit: cover; opacity: 0.5; }
+    .course-card-img i { position: absolute; font-size: 2rem; }
     .course-card-img .course-progress-badge {
       position: absolute;
       bottom: 8px;
@@ -431,53 +431,89 @@
     .course-card .btn { margin-top: 10px; width: 100%; justify-content: center; padding: 8px 16px; font-size: 0.85rem; }
 
     /* ============================================================
-       FLOATING BUTTONS
+       PORTFOLIO
        ============================================================ */
-    .float-btns {
-      position: fixed; bottom: 20px; right: 16px; z-index: 9999;
-      display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
-    }
-    .float-btn {
-      display: flex; align-items: center; gap: 8px;
-      padding: 8px 16px; border-radius: 50px; color: #fff;
-      font-weight: 700; font-size: 0.8rem; text-decoration: none;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    #portfolio { background: var(--white); }
+    .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
+    .portfolio-filters { display: flex; gap: 6px; flex-wrap: wrap; }
+    .filter-btn {
+      padding: 5px 14px; border-radius: 50px;
+      border: 2px solid var(--gray); background: none; cursor: pointer;
+      font-weight: 700; font-size: 0.75rem; color: var(--text-muted);
       transition: var(--transition);
-      white-space: nowrap; border: none; cursor: pointer;
     }
-    .float-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
-    .float-btn.wa { background: #25D366; }
-    .float-btn.fb { background: #1877F2; }
-    .float-btn i { font-size: 1rem; }
-    .float-btn.chat-toggle-btn, .float-btn.share-btn { background: var(--blue); font-family: inherit; }
-    .float-btn.share-btn { background: var(--blue-dark); }
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--blue); color: #fff; border-color: var(--blue);
+    }
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+    }
+    .portfolio-item {
+      border-radius: 12px; overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
+      background: var(--gray-light);
+      aspect-ratio: 1;
+      position: relative; cursor: pointer;
+      transition: var(--transition);
+    }
+    .portfolio-item:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
+    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
+    .portfolio-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(14,37,112,0.85) 0%, transparent 60%);
+      opacity: 0; transition: var(--transition);
+      display: flex; align-items: flex-end; padding: 12px;
+    }
+    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
+    .portfolio-overlay span { color: #fff; font-weight: 700; font-size: 0.8rem; }
 
     /* ============================================================
-       CHAT PANEL
+       PARTENAIRES (NOUVEAU)
        ============================================================ */
-    .chat-panel {
-      position: fixed; bottom: 80px; right: 16px; z-index: 9998;
-      width: min(280px, 80vw); background: #fff; border-radius: 14px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
-      display: none; flex-direction: column; padding: 16px;
-      max-height: 65vh; overflow-y: auto;
+    #partenaires { background: var(--gray-light); }
+    .partenaires-grid {
+      display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+      gap: 30px; margin-top: 30px; padding: 10px;
     }
-    .chat-panel.open { display: flex; }
-    .chat-panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
-    .chat-panel-head div { font-family: var(--font-exo); font-weight: 800; color: var(--text); font-size: 0.95rem; }
-    .chat-panel-head i { color: var(--blue); margin-right: 6px; }
-    .chat-close { background: none; border: none; font-size: 1rem; color: var(--text-muted); cursor: pointer; }
-    .chat-panel-sub { color: var(--text-muted); font-size: 0.75rem; margin-bottom: 10px; }
-    .chat-faq-list { display: flex; flex-direction: column; gap: 6px; }
-    .chat-faq-item {
-      text-align: left; background: var(--gray-light); border: 1px solid var(--gray);
-      border-radius: 8px; padding: 8px 12px; font-size: 0.8rem; font-weight: 600;
-      color: var(--text); cursor: pointer; transition: var(--transition);
+    .partenaires-grid img {
+      height: 60px; width: auto; max-width: 120px;
+      object-fit: contain; filter: grayscale(1); opacity: 0.5;
+      transition: var(--transition);
     }
-    .chat-faq-item:hover { background: rgba(37,211,102,0.1); border-color: #25D366; }
+    .partenaires-grid img:hover { filter: grayscale(0); opacity: 1; }
 
     /* ============================================================
-       DEMO - COMPACT
+       AVANT/APRÈS
+       ============================================================ */
+    #avant-apres { background: var(--gray-light); }
+    .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 30px; }
+    .ba-slider {
+      position: relative; aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden;
+      box-shadow: var(--shadow); user-select: none;
+    }
+    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .ba-after { filter: none; }
+    .ba-before { filter: grayscale(0.9) brightness(0.85) contrast(0.9); }
+    .ba-before-wrap { position: absolute; inset: 0; width: 50%; overflow: hidden; border-right: 3px solid #fff; }
+    .ba-before-wrap .ba-img { width: var(--ba-w, 200%); max-width: none; height: 100%; }
+    .ba-range {
+      position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
+      opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none;
+    }
+    .ba-handle {
+      position: absolute; top: 50%; left: 50%; width: 36px; height: 36px;
+      background: #fff; border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      display: flex; align-items: center; justify-content: center; color: var(--blue);
+      transform: translate(-50%, -50%); pointer-events: none; font-size: 0.85rem;
+    }
+    .ba-tag { position: absolute; top: 10px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 50px; color: #fff; pointer-events: none; }
+    .ba-tag-before { left: 10px; background: rgba(14,37,112,0.75); }
+    .ba-tag-after { right: 10px; background: rgba(58,173,58,0.85); }
+
+    /* ============================================================
+       DEMO
        ============================================================ */
     #demo { background: var(--white); }
     .demo-grid {
@@ -532,7 +568,7 @@
     .demo-preview .preview-logo { font-size: 2rem; transition: var(--transition); }
 
     /* ============================================================
-       SIMULATIONS - COMPACT
+       SIMULATIONS
        ============================================================ */
     #simulations { background: var(--gray-light); }
     .sim-grid {
@@ -583,7 +619,7 @@
     }
 
     /* ============================================================
-       TARIFS - COMPACT
+       TARIFS
        ============================================================ */
     #tarifs { background: var(--gray-light); }
     .tarifs-grid {
@@ -632,7 +668,7 @@
     .tarif-head-green { background: linear-gradient(135deg, var(--green-dark), var(--green)); }
 
     /* ============================================================
-       QUOTE - COMPACT
+       QUOTE
        ============================================================ */
     .quote-box {
       margin-top: 24px; background: var(--white); border-radius: var(--radius);
@@ -659,74 +695,7 @@
     .quote-total strong { font-family: var(--font-exo); font-size: clamp(1.2rem, 1.5vw, 1.5rem); color: var(--blue); }
 
     /* ============================================================
-       PORTFOLIO - COMPACT
-       ============================================================ */
-    #portfolio { background: var(--white); }
-    .portfolio-header { display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 12px; margin-bottom: 24px; }
-    .portfolio-filters { display: flex; gap: 6px; flex-wrap: wrap; }
-    .filter-btn {
-      padding: 5px 14px; border-radius: 50px;
-      border: 2px solid var(--gray); background: none; cursor: pointer;
-      font-weight: 700; font-size: 0.75rem; color: var(--text-muted);
-      transition: var(--transition);
-    }
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--blue); color: #fff; border-color: var(--blue);
-    }
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 16px;
-    }
-    .portfolio-item {
-      border-radius: 12px; overflow: hidden;
-      box-shadow: 0 4px 16px rgba(0,0,0,0.06);
-      background: var(--gray-light);
-      aspect-ratio: 1;
-      position: relative; cursor: pointer;
-      transition: var(--transition);
-    }
-    .portfolio-item:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(0,0,0,0.12); }
-    .portfolio-item img { width: 100%; height: 100%; object-fit: cover; }
-    .portfolio-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to top, rgba(14,37,112,0.85) 0%, transparent 60%);
-      opacity: 0; transition: var(--transition);
-      display: flex; align-items: flex-end; padding: 12px;
-    }
-    .portfolio-item:hover .portfolio-overlay { opacity: 1; }
-    .portfolio-overlay span { color: #fff; font-weight: 700; font-size: 0.85rem; }
-
-    /* ============================================================
-       AVANT/APRÈS - COMPACT
-       ============================================================ */
-    #avant-apres { background: var(--gray-light); }
-    .ba-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 30px; }
-    .ba-slider {
-      position: relative; aspect-ratio: 4/3; border-radius: var(--radius); overflow: hidden;
-      box-shadow: var(--shadow); user-select: none;
-    }
-    .ba-img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-    .ba-after { filter: none; }
-    .ba-before { filter: grayscale(0.9) brightness(0.85) contrast(0.9); }
-    .ba-before-wrap { position: absolute; inset: 0; width: 50%; overflow: hidden; border-right: 3px solid #fff; }
-    .ba-before-wrap .ba-img { width: var(--ba-w, 200%); max-width: none; height: 100%; }
-    .ba-range {
-      position: absolute; inset: 0; width: 100%; height: 100%; margin: 0;
-      opacity: 0; cursor: ew-resize; -webkit-appearance: none; appearance: none;
-    }
-    .ba-handle {
-      position: absolute; top: 50%; left: 50%; width: 36px; height: 36px;
-      background: #fff; border-radius: 50%; box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-      display: flex; align-items: center; justify-content: center; color: var(--blue);
-      transform: translate(-50%, -50%); pointer-events: none; font-size: 0.85rem;
-    }
-    .ba-tag { position: absolute; top: 10px; font-size: 0.6rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.06em; padding: 3px 10px; border-radius: 50px; color: #fff; pointer-events: none; }
-    .ba-tag-before { left: 10px; background: rgba(14,37,112,0.75); }
-    .ba-tag-after { right: 10px; background: rgba(58,173,58,0.85); }
-
-    /* ============================================================
-       BOUTIQUE - COMPACT
+       BOUTIQUE
        ============================================================ */
     #boutique { background: var(--white); }
     .boutique-grid {
@@ -755,7 +724,7 @@
     .boutique-cta a { margin-top: 10px; }
 
     /* ============================================================
-       TÉMOIGNAGES - COMPACT
+       TÉMOIGNAGES
        ============================================================ */
     #temoignages { background: var(--white); }
     .testimonial-wrap { 
@@ -786,7 +755,7 @@
     @media(max-width:640px){ .testimonial-card { padding: 16px; } .test-nav { width: 30px; height: 30px; font-size: 0.7rem; } }
 
     /* ============================================================
-       ABOUT - COMPACT
+       ABOUT
        ============================================================ */
     #about { background: linear-gradient(135deg, var(--blue-dark) 0%, var(--blue) 100%); color: #fff; }
     #about .section-tag { background: rgba(255,255,255,0.12); color: var(--green-light); }
@@ -832,14 +801,14 @@
     @media(max-width:820px){ .about-grid { grid-template-columns: 1fr; } .about-features { grid-template-columns: 1fr 1fr; } }
 
     /* ============================================================
-       RENDEZ-VOUS - COMPACT
+       RENDEZ-VOUS
        ============================================================ */
     #rdv { background: var(--gray-light); }
     .rdv-box { max-width: 640px; margin-top: 30px; background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); padding: 24px; width: 100%; }
     .rdv-hours { margin-top: 12px; text-align: center; color: var(--text-muted); font-size: 0.8rem; }
 
     /* ============================================================
-       FAQ - COMPACT
+       FAQ
        ============================================================ */
     #faq { background: var(--gray-light); }
     .faq-list { max-width: 700px; margin: 30px auto 0; display: flex; flex-direction: column; gap: 10px; }
@@ -861,7 +830,7 @@
     .faq-item.open .faq-answer { max-height: 250px; padding: 0 18px 14px; }
 
     /* ============================================================
-       CONTACT - COMPACT
+       CONTACT
        ============================================================ */
     #contact { background: var(--gray-light); }
     .contact-wrap { display: grid; grid-template-columns: 1fr 1.3fr; gap: 32px; margin-top: 30px; align-items: start; }
@@ -909,7 +878,7 @@
     @media(max-width:820px){ .contact-wrap { grid-template-columns: 1fr; } .form-row { grid-template-columns: 1fr; } }
 
     /* ============================================================
-       FOOTER - COMPACT
+       FOOTER
        ============================================================ */
     footer {
       background: var(--blue-dark);
@@ -939,6 +908,52 @@
     @media(max-width:700px){ .footer-grid { grid-template-columns: 1fr; gap: 18px; } }
 
     /* ============================================================
+       FLOATING BUTTONS
+       ============================================================ */
+    .float-btns {
+      position: fixed; bottom: 20px; right: 16px; z-index: 9999;
+      display: flex; flex-direction: column; gap: 8px; align-items: flex-end;
+    }
+    .float-btn {
+      display: flex; align-items: center; gap: 8px;
+      padding: 8px 16px; border-radius: 50px; color: #fff;
+      font-weight: 700; font-size: 0.8rem; text-decoration: none;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: var(--transition);
+      white-space: nowrap; border: none; cursor: pointer;
+    }
+    .float-btn:hover { transform: translateY(-2px) scale(1.03); box-shadow: 0 8px 24px rgba(0,0,0,0.25); }
+    .float-btn.wa { background: #25D366; }
+    .float-btn.fb { background: #1877F2; }
+    .float-btn i { font-size: 1rem; }
+    .float-btn.chat-toggle-btn, .float-btn.share-btn { background: var(--blue); font-family: inherit; }
+    .float-btn.share-btn { background: var(--blue-dark); }
+
+    /* ============================================================
+       CHAT PANEL
+       ============================================================ */
+    .chat-panel {
+      position: fixed; bottom: 80px; right: 16px; z-index: 9998;
+      width: min(280px, 80vw); background: #fff; border-radius: 14px;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.25);
+      display: none; flex-direction: column; padding: 16px;
+      max-height: 65vh; overflow-y: auto;
+    }
+    .chat-panel.open { display: flex; }
+    .chat-panel-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 4px; }
+    .chat-panel-head div { font-family: var(--font-exo); font-weight: 800; color: var(--text); font-size: 0.95rem; }
+    .chat-panel-head i { color: var(--blue); margin-right: 6px; }
+    .chat-close { background: none; border: none; font-size: 1rem; color: var(--text-muted); cursor: pointer; }
+    .chat-panel-sub { color: var(--text-muted); font-size: 0.75rem; margin-bottom: 10px; }
+    .chat-faq-list { display: flex; flex-direction: column; gap: 6px; }
+    .chat-faq-item {
+      text-align: left; background: var(--gray-light); border: 1px solid var(--gray);
+      border-radius: 8px; padding: 8px 12px; font-size: 0.8rem; font-weight: 600;
+      color: var(--text); cursor: pointer; transition: var(--transition);
+    }
+    .chat-faq-item:hover { background: rgba(37,211,102,0.1); border-color: #25D366; }
+
+    /* ============================================================
        SCROLL TOP
        ============================================================ */
     #scrolltop {
@@ -953,7 +968,7 @@
     #scrolltop.show { opacity: 1; transform: scale(1); }
 
     /* ============================================================
-       TICKER - COMPACT
+       TICKER
        ============================================================ */
     .ticker-bar {
       background: var(--green-dark); color: #fff;
@@ -1015,7 +1030,7 @@
     @media(max-width:700px){ .lb-arrow { width: 32px; height: 32px; font-size: 0.8rem; } }
 
     /* ============================================================
-       COURSE PLAYER (MODAL) - COMPACT
+       COURSE PLAYER
        ============================================================ */
     .course-player-overlay {
       display: none; position: fixed; inset: 0; z-index: 10001;
@@ -1116,7 +1131,7 @@
     }
 
     /* ============================================================
-       RESPONSIVE - COMPACT
+       RESPONSIVE
        ============================================================ */
     @media(max-width:1024px){ section { padding: 40px 16px; } .about-grid { gap: 24px; } }
     @media(max-width:820px){
@@ -1174,7 +1189,7 @@
 <body>
 
 <!-- ============================================================
-   FLOATING BUTTONS - COMPACT
+   FLOATING BUTTONS
    ============================================================ -->
 <div class="float-btns">
   <button class="float-btn chat-toggle-btn" id="chatToggleBtn"><i class="fas fa-comments"></i> Assistant</button>
@@ -1184,7 +1199,7 @@
 </div>
 
 <!-- ============================================================
-   CHAT PANEL - COMPACT
+   CHAT PANEL
    ============================================================ -->
 <div class="chat-panel" id="chatPanel">
   <div class="chat-panel-head">
@@ -1202,7 +1217,7 @@
 </div>
 
 <!-- ============================================================
-   SHARE MODAL - COMPACT
+   SHARE MODAL
    ============================================================ -->
 <div class="modal-overlay" id="shareModalOverlay">
   <div class="modal">
@@ -1215,12 +1230,12 @@
 </div>
 
 <!-- ============================================================
-   SCROLL TOP - COMPACT
+   SCROLL TOP
    ============================================================ -->
 <button id="scrolltop" title="Haut de page"><i class="fas fa-chevron-up"></i></button>
 
 <!-- ============================================================
-   TICKER - COMPACT
+   TICKER
    ============================================================ -->
 <div class="ticker-bar">
   <div class="ticker-inner">
@@ -1235,7 +1250,7 @@
 </div>
 
 <!-- ============================================================
-   NAV - COMPACT
+   NAVIGATION
    ============================================================ -->
 <nav>
   <a href="#" class="nav-logo">
@@ -1253,6 +1268,7 @@
     <li><a href="#simulations">Simulations</a></li>
     <li><a href="#tarifs">Tarifs</a></li>
     <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#partenaires">Partenaires</a></li>
     <li><a href="#temoignages">Avis</a></li>
     <li><a href="#about">À propos</a></li>
     <li><a href="#contact" class="nav-cta">Contact</a></li>
@@ -1265,7 +1281,7 @@
 </nav>
 
 <!-- ============================================================
-   HERO - COMPACT
+   HERO
    ============================================================ -->
 <section class="hero">
   <div class="hero-content">
@@ -1287,7 +1303,7 @@
 </section>
 
 <!-- ============================================================
-   STATS - COMPACT
+   STATS
    ============================================================ -->
 <div class="stats-bar">
   <div class="stat-item"><div class="stat-num">5</div><div class="stat-label">Cours gratuits</div></div>
@@ -1297,17 +1313,20 @@
 </div>
 
 <!-- ============================================================
-   SERVICES - COMPACT
+   SERVICES
    ============================================================ -->
 <section id="services">
   <div class="reveal">
     <div class="section-tag"><i class="fas fa-grid-2"></i> Ce que nous proposons</div>
     <h2 class="section-title">Nos <span>Services</span> &amp; Prestations</h2>
-    <p class="section-sub">Une gamme complète de solutions digitales pour particuliers et entreprises, à Koudougou et à distance.</p>
+    <p class="section-sub">Une gamme complète de solutions digitales pour particuliers et entreprises.</p>
   </div>
   <div class="services-grid">
     <div class="service-card card-infographie reveal">
-      <div class="service-card-head"><i class="fas fa-pen-nib" style="color:#fff"></i><h3>Infographie</h3></div>
+      <div class="service-card-head">
+        <img src="images/SiteWeb.png" alt="Infographie" onerror="this.style.display='none'"/>
+        <h3>Infographie</h3>
+      </div>
       <div class="service-card-body">
         <ul class="service-list">
           <li><i class="fas fa-check-circle"></i> Conception d'affiches &amp; flyers</li>
@@ -1319,7 +1338,10 @@
       </div>
     </div>
     <div class="service-card card-informatique reveal">
-      <div class="service-card-head"><i class="fas fa-desktop" style="color:#fff"></i><h3>Informatique</h3></div>
+      <div class="service-card-head">
+        <img src="images/Gérer.png" alt="Informatique" onerror="this.style.display='none'"/>
+        <h3>Informatique</h3>
+      </div>
       <div class="service-card-body">
         <ul class="service-list">
           <li><i class="fas fa-check-circle"></i> Installation de logiciels &amp; Windows</li>
@@ -1331,7 +1353,10 @@
       </div>
     </div>
     <div class="service-card card-abonnements reveal">
-      <div class="service-card-head"><i class="fas fa-tv" style="color:#fff"></i><h3>Abonnements</h3></div>
+      <div class="service-card-head">
+        <img src="images/Booste.png" alt="Abonnements" onerror="this.style.display='none'"/>
+        <h3>Abonnements</h3>
+      </div>
       <div class="service-card-body">
         <ul class="service-list">
           <li><i class="fas fa-check-circle"></i> Netflix, Disney+, Prime Vidéo</li>
@@ -1343,7 +1368,10 @@
       </div>
     </div>
     <div class="service-card card-divers reveal">
-      <div class="service-card-head"><i class="fas fa-tools" style="color:#fff"></i><h3>Services Divers</h3></div>
+      <div class="service-card-head">
+        <img src="images/CoursAdomicil.png" alt="Services Divers" onerror="this.style.display='none'"/>
+        <h3>Services Divers</h3>
+      </div>
       <div class="service-card-body">
         <ul class="service-list">
           <li><i class="fas fa-check-circle"></i> Rédaction de CV &amp; lettres de motivation</li>
@@ -1358,7 +1386,7 @@
 </section>
 
 <!-- ============================================================
-   COURS - COMPACT (5 cours)
+   COURS GRATUITS
    ============================================================ -->
 <section id="courses">
   <div class="reveal">
@@ -1366,7 +1394,7 @@
     <h2 class="section-title">Nos <span>Cours</span> Gratuits</h2>
     <p class="section-sub">Des formations complètes avec du contenu textuel, des quiz et des certifications — entièrement gratuits.</p>
   </div>
-  <div class="courses-grid" id="coursesGrid">
+  <div class="courses-grid">
     <!-- Cours 1 -->
     <div class="course-card reveal" onclick="openCourse('cybersec')">
       <div class="course-card-img" style="background: linear-gradient(135deg, #1a3fa5, #2d5be3);">
@@ -1432,8 +1460,9 @@
 
     <!-- Cours 4 -->
     <div class="course-card reveal" onclick="openCourse('retouche')">
-      <div class="course-card-img" style="background: linear-gradient(135deg, #e67e22, #f39c12);">
-        <i class="fas fa-image"></i>
+      <div class="course-card-img" style="background: linear-gradient(135deg, #e67e22, #f39c12); position:relative; overflow:hidden;">
+        <img src="images/L'expertise.png" alt="Retouche photo" style="width:100%;height:100%;object-fit:cover;opacity:0.4;" onerror="this.style.display='none'"/>
+        <i class="fas fa-image" style="position:absolute;font-size:2rem;color:#fff;"></i>
         <span class="course-free-badge"><i class="fas fa-graduation-cap"></i> Gratuit</span>
         <span class="course-progress-badge" id="progress-retouche">0%</span>
       </div>
@@ -1475,19 +1504,224 @@
 </section>
 
 <!-- ============================================================
-   COURSE PLAYER (MODAL) - COMPACT
+   PORTFOLIO - AVEC TOUTES LES IMAGES
    ============================================================ -->
-<div class="course-player-overlay" id="coursePlayerOverlay">
-  <div class="course-player">
-    <button class="course-player-close" onclick="closeCoursePlayer()"><i class="fas fa-xmark"></i></button>
-    <div id="coursePlayerContent">
-      <!-- Rempli dynamiquement par JavaScript -->
+<section id="portfolio">
+  <div class="reveal">
+    <div class="section-tag"><i class="fas fa-images"></i> Nos réalisations</div>
+    <h2 class="section-title">Notre <span>Portfolio</span></h2>
+    <p class="section-sub">Découvrez nos dernières créations : logos, affiches, flyers et bien plus encore.</p>
+  </div>
+  <div class="portfolio-header">
+    <div class="portfolio-filters">
+      <button class="filter-btn active" data-filter="all">Tout</button>
+      <button class="filter-btn" data-filter="logo">Logos</button>
+      <button class="filter-btn" data-filter="affiche">Affiches</button>
+      <button class="filter-btn" data-filter="flyer">Flyers</button>
+      <button class="filter-btn" data-filter="autre">Autre</button>
     </div>
   </div>
-</div>
+  <div class="portfolio-grid" id="portfolioGrid">
+    
+    <!-- ===== LOGOS ===== -->
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/Logo 1.jpg" alt="Logo professionnel 1" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Pro 1</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/Logo2.jpg" alt="Logo moderne 2" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Moderne 2</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/Logo3.png" alt="Logo minimaliste 3" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Minimaliste 3</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/LogoPro.jpg" alt="Logo professionnel Pro" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Pro</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/LogoWin.jpg" alt="Logo gagnant" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Gagnant</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/Logow.png" alt="Logo élégant" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Élégant</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/Mon logo.png" alt="Logo personnalisé" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Personnalisé</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="logo">
+      <img src="images/Tula.png" alt="Logo Tula" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Logo Tula</span></div>
+    </div>
+    
+    <!-- ===== AFFICHES ===== -->
+    <div class="portfolio-item" data-cat="affiche">
+      <img src="images/Affiche 2.png" alt="Affiche promotionnelle" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Affiche Pro</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="affiche">
+      <img src="images/Affiche Kokodonda.jpg" alt="Affiche événementielle" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Affiche Événement</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="affiche">
+      <img src="images/AfficheBe.jpg" alt="Banderole publicitaire" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Banderole</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="affiche">
+      <img src="images/affich.png" alt="Affiche design" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Affiche Design</span></div>
+    </div>
+    
+    <!-- ===== FLYERS ===== -->
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="images/Flyers 1.jpg" alt="Flyer design 1" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Flyer 1</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="images/Flyers 2.jpg" alt="Flyer design 2" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Flyer 2</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="images/Flyers.png" alt="Flyer moderne" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Flyer Moderne</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="images/FlyersMot.jpg" alt="Flyer motivation" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Flyer Motivation</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="images/AfficheBonweek.jpg" alt="Flyer Bon Week-end" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Flyer Week-end</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="images/Defsemai3.png" alt="Flyer événement" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Flyer Événement</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="flyer">
+      <img src="images/tgif.png" alt="Flyer TGIF" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Flyer TGIF</span></div>
+    </div>
+    
+    <!-- ===== AUTRES ===== -->
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Carte.jpg" alt="Carte de visite" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Carte de Visite</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Appi.png" alt="Application mobile" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Application Mobile</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Booste.png" alt="Booste votre activité" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Booste votre Activité</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Casser.png" alt="Casser les codes" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Casser les Codes</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Gérer.png" alt="Gestion efficace" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Gestion Efficace</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Relax.png" alt="Relaxation" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Relaxation</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/SiteWeb.png" alt="Site web professionnel" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Site Web</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Visib.png" alt="Visibilité en ligne" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Visibilité en Ligne</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/CoursAdomicil.png" alt="Cours à domicile" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Cours à Domicile</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/image.png" alt="Image design" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Image Design</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/Image 2.png" alt="Design créatif" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>Design Créatif</span></div>
+    </div>
+    <div class="portfolio-item" data-cat="autre">
+      <img src="images/L'expertise.png" alt="L'expertise au service" loading="lazy" width="400" height="400" onerror="this.src='images/logo.png'"/>
+      <div class="portfolio-overlay"><span>L'Expertise</span></div>
+    </div>
+  </div>
+</section>
 
 <!-- ============================================================
-   DEMO - COMPACT
+   PARTENAIRES
+   ============================================================ -->
+<section id="partenaires">
+  <div class="reveal">
+    <div class="section-tag"><i class="fas fa-handshake"></i> Ils nous font confiance</div>
+    <h2 class="section-title">Nos <span>Partenaires</span></h2>
+    <p class="section-sub">Des entreprises et marques qui nous ont choisis pour leurs projets.</p>
+    <div class="partenaires-grid">
+      <img src="images/Logo 1.jpg" alt="Partenaire 1" loading="lazy" onerror="this.style.display='none'"/>
+      <img src="images/Logo2.jpg" alt="Partenaire 2" loading="lazy" onerror="this.style.display='none'"/>
+      <img src="images/LogoPro.jpg" alt="Partenaire 3" loading="lazy" onerror="this.style.display='none'"/>
+      <img src="images/LogoWin.jpg" alt="Partenaire 4" loading="lazy" onerror="this.style.display='none'"/>
+      <img src="images/Logow.png" alt="Partenaire 5" loading="lazy" onerror="this.style.display='none'"/>
+      <img src="images/Mon logo.png" alt="Partenaire 6" loading="lazy" onerror="this.style.display='none'"/>
+      <img src="images/Tula.png" alt="Partenaire 7" loading="lazy" onerror="this.style.display='none'"/>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+   AVANT/APRÈS
+   ============================================================ -->
+<section id="avant-apres">
+  <div class="reveal">
+    <div class="section-tag"><i class="fas fa-wand-magic-sparkles"></i> Retouche photo</div>
+    <h2 class="section-title">Avant <span>/</span> Après</h2>
+    <p class="section-sub">Faites glisser le curseur pour voir la différence en temps réel.</p>
+  </div>
+  <div class="ba-grid">
+    <div class="ba-slider reveal">
+      <img class="ba-img ba-after" src="images/Affiche 2.png" alt="Après retouche" loading="lazy" onerror="this.src='images/logo.png'"/>
+      <div class="ba-before-wrap">
+        <img class="ba-img ba-before" src="images/Affiche 2.png" alt="Avant retouche" loading="lazy" onerror="this.src='images/logo.png'"/>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="ba-range"/>
+      <div class="ba-handle"><i class="fas fa-arrows-left-right"></i></div>
+      <span class="ba-tag ba-tag-before">Avant</span>
+      <span class="ba-tag ba-tag-after">Après</span>
+    </div>
+    <div class="ba-slider reveal">
+      <img class="ba-img ba-after" src="images/AfficheBonweek.jpg" alt="Après retouche" loading="lazy" onerror="this.src='images/logo.png'"/>
+      <div class="ba-before-wrap">
+        <img class="ba-img ba-before" src="images/AfficheBonweek.jpg" alt="Avant retouche" loading="lazy" onerror="this.src='images/logo.png'"/>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="ba-range"/>
+      <div class="ba-handle"><i class="fas fa-arrows-left-right"></i></div>
+      <span class="ba-tag ba-tag-before">Avant</span>
+      <span class="ba-tag ba-tag-after">Après</span>
+    </div>
+    <div class="ba-slider reveal">
+      <img class="ba-img ba-after" src="images/Logo 1.jpg" alt="Après retouche" loading="lazy" onerror="this.src='images/logo.png'"/>
+      <div class="ba-before-wrap">
+        <img class="ba-img ba-before" src="images/Logo 1.jpg" alt="Avant retouche" loading="lazy" onerror="this.src='images/logo.png'"/>
+      </div>
+      <input type="range" min="0" max="100" value="50" class="ba-range"/>
+      <div class="ba-handle"><i class="fas fa-arrows-left-right"></i></div>
+      <span class="ba-tag ba-tag-before">Avant</span>
+      <span class="ba-tag ba-tag-after">Après</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+   DÉMONSTRATIONS
    ============================================================ -->
 <section id="demo">
   <div class="reveal">
@@ -1547,10 +1781,10 @@
         <div class="demo-tool">
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:8px;">
             <div style="border-radius:6px;overflow:hidden;background:var(--gray);position:relative;aspect-ratio:1;border:2px solid var(--gray);">
-              <img src="images/Affiche 2.png" alt="Original" style="width:100%;height:100%;object-fit:cover;" id="demoImgOriginal"/>
+              <img src="images/Affiche 2.png" alt="Original" style="width:100%;height:100%;object-fit:cover;" id="demoImgOriginal" onerror="this.src='images/logo.png'"/>
             </div>
             <div style="border-radius:6px;overflow:hidden;background:var(--gray);position:relative;aspect-ratio:1;border:2px solid var(--blue);">
-              <img src="images/Affiche 2.png" alt="Retouché" style="width:100%;height:100%;object-fit:cover;" id="demoImgRetouched"/>
+              <img src="images/Affiche 2.png" alt="Retouché" style="width:100%;height:100%;object-fit:cover;" id="demoImgRetouched" onerror="this.src='images/logo.png'"/>
             </div>
           </div>
           <div class="demo-controls" style="justify-content:center;">
@@ -1565,7 +1799,7 @@
 </section>
 
 <!-- ============================================================
-   SIMULATIONS - COMPACT
+   SIMULATIONS
    ============================================================ -->
 <section id="simulations">
   <div class="reveal">
@@ -1608,7 +1842,7 @@
 </section>
 
 <!-- ============================================================
-   TARIFS - COMPACT
+   TARIFS
    ============================================================ -->
 <section id="tarifs">
   <div class="reveal">
@@ -1670,85 +1904,7 @@
 </section>
 
 <!-- ============================================================
-   PORTFOLIO - COMPACT
-   ============================================================ -->
-<section id="portfolio">
-  <div class="portfolio-header reveal">
-    <div>
-      <div class="section-tag"><i class="fas fa-images"></i> Nos réalisations</div>
-      <h2 class="section-title">Notre <span>Portfolio</span></h2>
-    </div>
-    <div class="portfolio-filters">
-      <button class="filter-btn active" data-filter="all">Tout</button>
-      <button class="filter-btn" data-filter="logo">Logos</button>
-      <button class="filter-btn" data-filter="affiche">Affiches</button>
-      <button class="filter-btn" data-filter="flyer">Flyers</button>
-      <button class="filter-btn" data-filter="autre">Autre</button>
-    </div>
-  </div>
-  <div class="portfolio-grid" id="portfolioGrid">
-    <div class="portfolio-item" data-cat="affiche">
-      <img src="images/Affiche 2.png" alt="Affiche promotionnelle" loading="lazy" width="400" height="400"/>
-      <div class="portfolio-overlay"><span>Affiche 1</span></div>
-    </div>
-    <div class="portfolio-item" data-cat="affiche">
-      <img src="images/Affiche Kokodonda.jpg" alt="Affiche événementielle" loading="lazy" width="400" height="400"/>
-      <div class="portfolio-overlay"><span>Affiche 2</span></div>
-    </div>
-    <div class="portfolio-item" data-cat="logo">
-      <img src="images/Logo3.png" alt="Logo minimaliste" loading="lazy" width="400" height="400"/>
-      <div class="portfolio-overlay"><span>Logo 1</span></div>
-    </div>
-    <div class="portfolio-item" data-cat="flyer">
-      <img src="images/Flyers 2.jpg" alt="Flyer design" loading="lazy" width="400" height="400"/>
-      <div class="portfolio-overlay"><span>Flyer 1</span></div>
-    </div>
-    <div class="portfolio-item" data-cat="flyer">
-      <img src="images/AfficheBonweek.jpg" alt="Flyer promotionnel" loading="lazy" width="400" height="400"/>
-      <div class="portfolio-overlay"><span>Flyer 2</span></div>
-    </div>
-    <div class="portfolio-item" data-cat="autre">
-      <img src="images/Carte.jpg" alt="Carte de visite" loading="lazy" width="400" height="400"/>
-      <div class="portfolio-overlay"><span>Carte de visite</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-   AVANT/APRÈS - COMPACT
-   ============================================================ -->
-<section id="avant-apres">
-  <div class="reveal">
-    <div class="section-tag"><i class="fas fa-wand-magic-sparkles"></i> Retouche photo</div>
-    <h2 class="section-title">Avant <span>/</span> Après</h2>
-    <p class="section-sub">Faites glisser le curseur pour voir la différence en temps réel.</p>
-  </div>
-  <div class="ba-grid">
-    <div class="ba-slider reveal">
-      <img class="ba-img ba-after" src="images/Affiche 2.png" alt="Après retouche" loading="lazy"/>
-      <div class="ba-before-wrap">
-        <img class="ba-img ba-before" src="images/Affiche 2.png" alt="Avant retouche" loading="lazy"/>
-      </div>
-      <input type="range" min="0" max="100" value="50" class="ba-range"/>
-      <div class="ba-handle"><i class="fas fa-arrows-left-right"></i></div>
-      <span class="ba-tag ba-tag-before">Avant</span>
-      <span class="ba-tag ba-tag-after">Après</span>
-    </div>
-    <div class="ba-slider reveal">
-      <img class="ba-img ba-after" src="images/AfficheBonweek.jpg" alt="Après retouche" loading="lazy"/>
-      <div class="ba-before-wrap">
-        <img class="ba-img ba-before" src="images/AfficheBonweek.jpg" alt="Avant retouche" loading="lazy"/>
-      </div>
-      <input type="range" min="0" max="100" value="50" class="ba-range"/>
-      <div class="ba-handle"><i class="fas fa-arrows-left-right"></i></div>
-      <span class="ba-tag ba-tag-before">Avant</span>
-      <span class="ba-tag ba-tag-after">Après</span>
-    </div>
-  </div>
-</section>
-
-<!-- ============================================================
-   BOUTIQUE - COMPACT
+   BOUTIQUE
    ============================================================ -->
 <section id="boutique">
   <div class="reveal">
@@ -1787,7 +1943,7 @@
 </section>
 
 <!-- ============================================================
-   TÉMOIGNAGES - COMPACT
+   TÉMOIGNAGES
    ============================================================ -->
 <section id="temoignages">
   <div class="reveal">
@@ -1827,7 +1983,7 @@
 </section>
 
 <!-- ============================================================
-   ABOUT - COMPACT
+   ABOUT
    ============================================================ -->
 <section id="about">
   <div class="about-grid">
@@ -1858,7 +2014,7 @@
 </section>
 
 <!-- ============================================================
-   RENDEZ-VOUS - COMPACT
+   RENDEZ-VOUS
    ============================================================ -->
 <section id="rdv">
   <div class="reveal">
@@ -1888,7 +2044,7 @@
 </section>
 
 <!-- ============================================================
-   FAQ - COMPACT
+   FAQ
    ============================================================ -->
 <section id="faq">
   <div class="reveal">
@@ -1917,7 +2073,7 @@
 </section>
 
 <!-- ============================================================
-   CONTACT - COMPACT
+   CONTACT
    ============================================================ -->
 <section id="contact">
   <div class="reveal">
@@ -1954,7 +2110,7 @@
 </section>
 
 <!-- ============================================================
-   FOOTER - COMPACT
+   FOOTER
    ============================================================ -->
 <footer>
   <div class="footer-grid">
@@ -1993,7 +2149,7 @@
 </footer>
 
 <!-- ============================================================
-   LIGHTBOX MODAL - COMPACT
+   LIGHTBOX MODAL
    ============================================================ -->
 <div class="modal-overlay" id="modalOverlay">
   <button class="lb-arrow lb-prev" id="lbPrev"><i class="fas fa-chevron-left"></i></button>
@@ -2007,7 +2163,19 @@
 </div>
 
 <!-- ============================================================
-   JAVASCRIPT - COMPACT
+   COURSE PLAYER
+   ============================================================ -->
+<div class="course-player-overlay" id="coursePlayerOverlay">
+  <div class="course-player">
+    <button class="course-player-close" onclick="closeCoursePlayer()"><i class="fas fa-xmark"></i></button>
+    <div id="coursePlayerContent">
+      <!-- Rempli dynamiquement par JavaScript -->
+    </div>
+  </div>
+</div>
+
+<!-- ============================================================
+   JAVASCRIPT
    ============================================================ -->
 <script>
   // ============================================================
@@ -2648,10 +2816,10 @@
   // ============================================================
   // INIT
   // ============================================================
-  console.log('%c ID-Intello Digit %c Version 7.0 - Compact & Pro ',
+  console.log('%c ID-Intello Digit %c Version 8.0 - Intégration complète des images ',
     'background:#1a3fa5;color:#fff;padding:8px 16px;border-radius:4px 0 0 4px;font-weight:bold;',
     'background:#3aad3a;color:#fff;padding:8px 16px;border-radius:0 4px 4px 0;');
-  console.log('📱 Design compact et responsive');
+  console.log('📸 Toutes vos images intégrées');
   console.log('📚 5 cours avec 32 chapitres');
   console.log('💡 Contact : +226 72 33 14 02');
 </script>
